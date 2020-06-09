@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="bd">
+		<button>按钮</button>
+		<script type="text/javascript">
+			var btn=document.getElementsByTagName("button")[0];
+			btn.onmouseout=function(){
+				var a=document.createElement("a");
+				a.innerHTML="百度一下";
+				a.style.color="red";
+				a.href="http://www.baidu.com";
+				bd.appendChild(a);
+//				window.close();
+			}
+		</script>
+	</body>
+</html>

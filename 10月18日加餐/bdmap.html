@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	body, html{margin:0;}
+	#allmap {height: 500px;width:100%px;overflow: hidden; margin: 0 auto; border-radius: 10px;}
+	</style>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=3.0&ak=YGzBWqPT7r0AP5jMZdCn2YaQqVbNHgpc"></script>
+	<script type="text/javascript" src="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.js"></script>
+	<link rel="stylesheet" href="http://api.map.baidu.com/library/SearchInfoWindow/1.5/src/SearchInfoWindow_min.css" />
+	<title>带检索功能的信息窗口</title>
+</head>
+<body>
+	<div id="allmap">
+	</div>
+<script type="text/javascript">
+	// 百度地图API功能
+    var map = new BMap.Map('allmap');
+    var poi = new BMap.Point(106.4912613060,29.5378179960);
+    map.centerAndZoom(poi, 19);//将创建好的地图，设置上经纬度
+    map.enableScrollWheelZoom();
+
+    var content = '<div style="margin:0;line-height:20px;padding:2px;">' +
+                    '<img src="wow5.jpeg" alt="" style="float:right;zoom:1;overflow:hidden;width:100px;height:100px;margin-left:3px;"/>' +
+                    '地址：重庆市九龙坡区大西洋国际12-1<br/>电话：(023)90909800<br/>简介：这里坐着重庆第一讲师skygood，一句话形容吊炸天。' +
+                  '</div>';
+
+    //创建检索信息窗口对象
+    var searchInfoWindow = null;
+	searchInfoWindow = new BMapLib.SearchInfoWindow(map, content, {
+			title  : "千锋教育",      //标题
+			width  : 350,             //宽度
+			height : 105,              //高度
+			panel  : "panel",         //检索结果面板
+			enableAutoPan : true,     //自动平移
+			searchTypes   :[
+				BMAPLIB_TAB_SEARCH,   //周边检索
+				BMAPLIB_TAB_TO_HERE,  //到这里去
+				BMAPLIB_TAB_FROM_HERE //从这里出发
+			]
+		});
+    var marker = new BMap.Marker(poi); //创建marker对象
+    
+    marker.addEventListener("click", function(e){
+	    searchInfoWindow.open(marker);
+    })
+    map.addOverlay(marker); //在地图中添加marker
+    
+//  var myP1 = new BMap.Point(106.4912613060,29.5378179960);    //起点
+//	var myP2 = new BMap.Point(106.4923618946,29.5380238192);    //终点
+//	var myIcon = new BMap.Icon("/", new BMap.Size(32, 70), {    //小车图片
+//		//offset: new BMap.Size(0, -5),    //相当于CSS精灵
+//		imageOffset: new BMap.Size(0, 0)    //图片的偏移量。为了是图片底部中心对准坐标点。
+//	  });
+//	var driving2 = new BMap.DrivingRoute(map, {renderOptions:{map: map, autoViewport: true}});    //驾车实例
+//	driving2.search(myP1, myP2);    //显示一条公交线路
+//
+//	window.run = function (){
+//		var driving = new BMap.DrivingRoute(map);    //驾车实例
+//		driving.search(myP1, myP2);
+//		driving.setSearchCompleteCallback(function(){
+//			var pts = driving.getResults().getPlan(0).getRoute(0).getPath();    //通过驾车实例，获得一系列点的数组
+//			var paths = pts.length;    //获得有几个点
+//
+//			var carMk = new BMap.Marker(pts[0],{icon:myIcon});
+//			map.addOverlay(carMk);
+//			i=0;
+//			function resetMkPoint(i){
+//				carMk.setPosition(pts[i]);
+//				if(i < paths){
+//					setTimeout(function(){
+//						i++;
+//						resetMkPoint(i);
+//					},100);
+//				}
+//			}
+//			setTimeout(function(){
+//				resetMkPoint(5);
+//			},100)
+//
+//		});
+//	}
+//
+//	setTimeout(function(){
+//		run();
+//	},1500);
+//	
+//	var styleJson = [
+//      {
+//          'featureType': 'land',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'water',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#ff5400ff'
+//          }
+//      }, {
+//          'featureType': 'green',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#ff54006e'
+//          }
+//      }, {
+//          'featureType': 'building',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'building',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#ffffffb3'
+//          }
+//      }, {
+//          'featureType': 'building',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#dadadab3'
+//          }
+//      }, {
+//          'featureType': 'subwaystation',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#b15454B2'
+//          }
+//      }, {
+//          'featureType': 'education',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#e4f1f1ff'
+//          }
+//      }, {
+//          'featureType': 'medical',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#f0dedeff'
+//          }
+//      }, {
+//          'featureType': 'scenicspots',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'color': '#e2efe5ff'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'weight': 4
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#f7c54dff'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#fed669ff'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#8f5a33ff'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'highway',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'weight': 2
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#d8d8d8ff'
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#ffeebbff'
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#525355ff'
+//          }
+//      }, {
+//          'featureType': 'arterial',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'weight': 1
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#d8d8d8ff'
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#979c9aff'
+//          }
+//      }, {
+//          'featureType': 'local',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'railway',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'weight': 1
+//          }
+//      }, {
+//          'featureType': 'railway',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#949494ff'
+//          }
+//      }, {
+//          'featureType': 'railway',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'visibility': 'on',
+//              'weight': 1
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#d8d8d8ff'
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'geometry.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#979c9aff'
+//          }
+//      }, {
+//          'featureType': 'subway',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'continent',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'continent',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'continent',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#333333ff'
+//          }
+//      }, {
+//          'featureType': 'continent',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'city',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'city',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'city',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#454d50ff'
+//          }
+//      }, {
+//          'featureType': 'city',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'town',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'town',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'town',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#454d50ff'
+//          }
+//      }, {
+//          'featureType': 'town',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffffff'
+//          }
+//      }, {
+//          'featureType': 'road',
+//          'elementType': 'geometry.fill',
+//          'stylers': {
+//              'color': '#47434c8a'
+//          }
+//      }, {
+//          'featureType': 'road',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'off'
+//          }
+//      }, {
+//          'featureType': 'road',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffff00'
+//          }
+//      }, {
+//          'featureType': 'poilabel',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'off'
+//          }
+//      }, {
+//          'featureType': 'poilabel',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'off'
+//          }
+//      }, {
+//          'featureType': 'poilabel',
+//          'elementType': 'labels.text.stroke',
+//          'stylers': {
+//              'color': '#ffffff00'
+//          }
+//      }, {
+//          'featureType': 'road',
+//          'elementType': 'labels.text.fill',
+//          'stylers': {
+//              'color': '#8f8899ff'
+//          }
+//      }, {
+//          'featureType': 'districtlabel',
+//          'elementType': 'labels.icon',
+//          'stylers': {
+//              'visibility': 'off'
+//          }
+//      }, {
+//          'featureType': 'districtlabel',
+//          'elementType': 'labels',
+//          'stylers': {
+//              'visibility': 'on'
+//          }
+//      }, {
+//          'featureType': 'manmade',
+//          'elementType': 'geometry',
+//          'stylers': {
+//              'color': '#47434c24'
+//          }
+//      }
+//  ];
+//	map.setMapStyleV2({styleJson:styleJson});
+	
+</script>
+</body>
+</html>

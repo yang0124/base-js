@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+// 			var d=105;
+// 			var num=3.1455123215214321;
+// 			try{
+// 				num=num.toFixed(d);//可能出错的代码
+// 			}catch(err123){
+// 				alert(err123);
+// 				alert("传入的保留小数位数必须在0~100之间")
+// 			}
+// //			
+// 			console.log("后续代码");
+
+//			try{
+//				console.log(a);
+//				console.log("我是try");//报错后，后续代码不执行
+//			}catch(err){//只有报错才会执行
+//				console.log(err);
+//			}finally{
+//				console.log(a);
+//				console.log("我是finally");
+//			}
+			
+var array1 = [
+	{key:12,val:1},
+	{key:12,val:2},
+	{key:12,val:5},
+	{key:13,val:5},
+	{key:13,val:5},
+	{key:14,val:5}
+	];
+	var dic = {};
+	for(var i=0;i<array1.length;i++){
+		if(dic[array1[i].key] == null){
+		dic[array1[i].key] = array1[i].val; 
+		}else{
+		dic[array1[i].key] += array1[i].val; 
+	}
+}
+
+for(var key in dic){
+ console.log(key,dic[key]);
+}
+			
+		</script>
+	</body>
+</html>

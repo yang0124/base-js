@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//入职时间
+			var start=new Date("2012/06/30");
+			//复制一份入职时间去计算到期时间
+			var end=new Date(start);
+			end.setFullYear(end.getFullYear()+3);
+
+			//复制一份到期时间去计算续签时间
+			var renew=new Date(end);
+			renew.setMonth(renew.getMonth()-1);
+			if(renew.getDay()==6){
+				renew.setDate(renew.getDate()-1);
+			}else if(renew.getDay()==0){
+				renew.setDate(renew.getDate()-2);
+			}
+			
+			//复制一份续签时间去计算提醒时间
+			var alert=new Date(renew);
+			alert.setDate(alert.getDate()-7);
+
+			console.log(format(start));
+			console.log(format(end));
+			console.log(format(renew));
+			console.log(format(alert));
+			
+			function format(date){
+				var y=date.getFullYear();
+				var M=date.getMonth()+1;
+				if(M<10){M="0"+M}
+				var d=date.getDate();
+				if(d<10){d="0"+d}
+				var h=date.getHours();
+				if(h<10){h="0"+h}
+				var m=date.getMinutes();
+				if(m<10){m="0"+m}
+				var s=date.getSeconds();
+				if(s<10){s="0"+s}
+				var day=date.getDay();
+				var arr=["天","一","二","三","四","五","六"];
+				
+				return y+"年"+M+"月"+d+"日"+" 星期"+arr[day]+" "+h+"点"+m+"分"+s+"秒";
+			}
+		</script>
+	</body>
+</html>

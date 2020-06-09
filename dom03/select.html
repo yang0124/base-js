@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="s1" onchange="selfunc()">
+			<option value="1">aa</option>
+			<option value="2">bb</option>
+		</select>
+		<script type="text/javascript">
+		  function selfunc(){
+		  	var sel = document.getElementById("s1");
+			var value = sel.options[sel.selectedIndex].value;
+			console.log(value);
+			
+			var c = new Option("cc","3");
+			sel.add(c);
+		  }
+			
+		</script>
+	</body>
+</html>

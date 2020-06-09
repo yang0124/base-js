@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="csz()">猜数字游戏</button>
+		<script type="text/javascript">
+			function csz(){
+				var hp=5;
+				var r=parseInt(Math.random()*(100-0+1)+0);
+				for(;;){
+					var user=parseInt(prompt("请输入一个数字,你的剩余生命为："+hp));
+					if(!isNaN(user) && user>=0 && user<=100 && hp>0){
+						if(user>r){
+							alert("大了");
+							hp--;
+						}else if(user<r){
+							alert("小了");
+							hp--;
+						}else{
+							alert("对了");
+							break;
+						}
+					}else{
+						if(hp==0){
+							alert("你挂了");
+							break;
+						}
+						alert("混账，恶意输入");
+						hp--;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="b1" type="button">停止</button>
+		<script type="text/javascript">
+			var a = window.setInterval("alert(1)",3000);
+			b1.onclick = function(){
+				clearInterval(a);
+				a = null;
+			}
+		</script>
+	</body>
+</html>

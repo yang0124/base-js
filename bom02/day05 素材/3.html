@@ -1,0 +1,41 @@
+﻿<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>事件处理</title>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" href="css/3.css"/>
+		<script>
+			//d1.onclick(event)
+			function highLight(e){//this->当前元素  target永远是你点击的那一个
+				e=window.event||e;
+				var target = e.target||e.srcElement;//获得目标元素
+				//设置当前元素的背景色为yellow
+				this.style.backgroundColor="yellow";
+				//弹出提示，显示当前元素的class属性
+				alert(target.className);
+				//清除当前元素的背景色
+				this.removeAttribute("style");
+				//取消冒泡
+				e.stopPropagation();
+				e.cancelBubble=true;
+				
+			}
+			window.onload=function(){
+				document.querySelector(".d1")
+							.addEventListener("click",highLight);
+				document.querySelector(".d2")
+							.addEventListener("click",highLight);
+				document.querySelector(".d3")
+							.addEventListener("click",highLight);
+			}
+		</script>
+	</head>
+	<body>
+		<div class="d1">
+			<div class="d2">
+				<div class="d3">
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

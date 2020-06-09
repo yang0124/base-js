@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="sel">
+			<option>中国</option>
+			<option>美国</option>
+			<option>英国</option>
+			<option>德国</option>
+			<option>法国</option>
+			<option>泰国</option>
+			<option>俄国</option>
+		</select>
+		<script type="text/javascript">
+//			var str="20190116";
+//			
+//			var newStr=str.replace(/(\d{4})(\d{2})(\d{2})/g,"$1年$2月$3日");
+//			
+//			console.log(newStr);
+			
+//			console.log(sel.innerHTML.trim().slice(8,-9).split(/<\/option>\s+<option>/));
+		
+			function round(num,d){
+			    num*=Math.pow(10,d);
+			    num=Math.round(num);
+			    num/=Math.pow(10,d);
+			    return num;
+			}
+			
+			var num=round(1.111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111,101);
+			console.log(num);
+		</script>
+	</body>
+</html>

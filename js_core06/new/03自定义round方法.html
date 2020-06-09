@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function round(num,d){
+				num*=Math.pow(10,d);
+				num=Math.round(num);
+				num/=Math.pow(10,d);
+				return num;
+			}
+			var num=round(3.455555,4);
+			console.log(num);
+		</script>
+	</body>
+</html>

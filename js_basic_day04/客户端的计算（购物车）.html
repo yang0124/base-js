@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8" />
+ </head>
+
+ <body>
+  <table id="tbl">
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td>iphone6</td>
+				<td>4488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>4488</td>
+			</tr>
+			<tr>
+				<td>iphone7</td>
+				<td>5488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>5488</td>
+			</tr>
+			<tr>
+				<td>iphone8</td>
+				<td>6488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>6488</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">总计:</td>
+				<td id="total">0</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+	<script type="text/javascript">
+		var btns=document.getElementsByTagName("button");
+		for(var i=0;i<btns.length;i++){
+			btns[i].onclick=function(){
+//				console.log(this);//这个：只有事件中可以使用，其实就是你当前点击的那个人，因为我们有6个人都绑定了事件，我得知道我点的是谁
+				if(this.innerHTML=="+"){
+					var span=this.previousElementSibling;
+					var spanV=parseInt(span.innerHTML)+1;
+					span.innerHTML=spanV;
+					
+					var price=parseInt(this.parentNode.previousElementSibling.innerHTML);
+					
+					var total=price*spanV;
+					
+					this.parentNode.nextElementSibling.innerHTML=total;
+				}else{
+					var span=this.nextElementSibling;
+					var spanV=parseInt(span.innerHTML)-1;
+					span.innerHTML=spanV;
+					
+					var price=parseInt(this.parentNode.previousElementSibling.innerHTML);
+					
+					var total=price*spanV;
+					
+					this.parentNode.nextElementSibling.innerHTML=total;
+				}
+				console.log("总计");
+			}
+		}
+	</script>
+	
+ </body>
+</html>

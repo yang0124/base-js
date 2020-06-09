@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn1">开启</button>
+		<button id="btn2">停止</button>
+		<script type="text/javascript">
+//			timer1=setInterval(()=>{
+//				console.log("碉堡了");
+//			},1000);
+//			timer2=setInterval(()=>{
+//				console.log("碉堡了");
+//			},1000);
+//			timer3=setInterval(()=>{
+//				console.log("碉堡了");
+//			},1000);
+//			console.log(timer1);
+//			console.log(timer2);
+//			console.log(timer3);
+
+			btn1.onclick=function(){
+				timer1=setInterval(()=>{
+					console.log("碉堡了");
+					clearInterval(timer1);
+					timer1=null;
+				},1000);
+			}
+			
+			btn2.onclick=function(){
+				clearInterval(timer1);
+				timer1=null;
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 100%;
+				height: 300px;
+			}
+			/*想要过渡必须是数值的css属性*/
+		</style>
+	</head>
+	<body>
+		<img id="img" src="img/wow1.jpg"/>
+		<button><</button>
+		<button>></button>
+		
+		<script type="text/javascript">
+			var srcs=["img/wow1.jpg","img/wow2.jpg","img/wow3.jpg"];
+			var btns=document.getElementsByTagName("button");
+			for(var i=0;i<btns.length;i++){
+				btns[i].onclick=function(){
+					if(this.innerHTML=="&gt;"){
+						var first=srcs.shift();
+						srcs.push(first);
+						img.setAttribute("src",srcs[0]);
+					}else{
+						var last=srcs.pop();
+						srcs.unshift(last);
+				
+						img.src=srcs[0];
+					}
+				}
+			}
+			
+			timer=setInterval(function(){
+				var first=srcs.shift();
+				srcs.push(first);
+				img.setAttribute("src",srcs[0]);
+			},1000)
+			
+			img.onmouseover=function(){
+				clearInterval(timer);
+				timer=null;
+			}
+			img.onmouseout=function(){
+				timer=setInterval(function(){
+					var first=srcs.shift();
+					srcs.push(first);
+					img.setAttribute("src",srcs[0]);
+				},1000)
+			}
+			
+		</script>
+	</body>
+</html>

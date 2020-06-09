@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width:100px;
+				height: 100px;
+				background: pink;
+				position: absolute;
+				top: 0;
+				left: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			//根据不同的屏幕大小可以获得最大可用的left和top
+			
+			var maxW=outerWidth-100;
+			var maxH=outerHeight-100;
+			var rl=parseInt(Math.random()*(maxW+1));
+			var rt=parseInt(Math.random()*(maxH+1))-70;
+			d1.style.top=rt+"px";
+			d1.style.left=rl+"px";
+			
+			d1.onmouseover=function(e){
+				while(true){
+					var rl=parseInt(Math.random()*(maxW+1));
+					var rt=parseInt(Math.random()*(maxH+1))-70;
+					if(!(rl<e.screenX && e.screenX<rl+100 && rt<e.screenY && e.screenY<rt+100)){
+						this.style.top=rt+"px";
+						this.style.left=rl+"px";
+						break;
+					}
+				}
+			}
+			d1.innerHTML="儿子来点我";
+		</script>
+	</body>
+</html>

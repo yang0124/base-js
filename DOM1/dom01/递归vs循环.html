@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>电影</li>
+			<li>综艺
+				<ul>
+					<li>跑男</li>
+					<li>极限</li>
+					<li>爸爸</li>
+				</ul>
+			</li>
+			<li>剧集</li>
+		</ul>
+		<ul>
+			<li>电影</li>
+			<li>综艺
+				<ul>
+					<li>跑男</li>
+					<li>极限</li>
+					<li>爸爸</li>
+				</ul>
+			</li>
+			<li>剧集</li>
+		</ul>
+		<script type="text/javascript">
+			//专门遍历parent下的直接子节点
+			//递归实现
+//			function getChildren(parent){
+//				//输出parent的nodeName
+//				console.log(parent)
+//				//遍历parent下每个直接子节点
+//				for(var i=0,len=parent.children.length;i<len;i++){
+//					arguments.callee(parent.children[i]);
+//				}
+//			}
+//			getChildren(ul);
+	
+			
+			function getChildren(parent){
+				//step1：创建迭代器，遍历parent下所有节点
+				var itertor = document.createTreeWalker(
+					parent,NodeFilter.SHOW_ELEMENT,null,false
+				)
+				console.log(itertor);
+				//step2:反复调用itertor的nextNode()方法，将返回的节点保存在变量node中，如果node不等null
+				var node=null;
+				while((node=itertor.nextNode())!=null){
+					console.log(
+						node
+					)
+				}
+			}
+			getChildren(ul);
+
+//使用循环
+			function getChildren(parent){
+				var org=parent;//先保存开始节点
+				while(true){
+					console.log(parent);
+					if(parent.firstElementChild){//如果有子节点，先找子节点
+						parent=parent.firstElementChild;
+					}else if(parent.nextElementSibling){//否则找下一个兄弟节点
+						parent=parent.nextElementSibling
+					}else{//没有子节点，没有下一个兄弟，就找爹的兄弟
+						  //如果爹没有兄弟，就跳到父节点，继续向上
+						  while(!parent.parentNode.nextElementSibling && parent!=org.lastElementChild){
+						  	parent=parent.parentNode;
+						  }//直到爹有兄弟，就跳到爹的兄弟
+						  parent=parent.parentNode.nextElementSibling;
+
+						  //如果已经是开始节点的最后一个孩子，就退出
+						  if(parent==org.lastElementChild){
+						  	console.log(parent);
+						  	break;
+						  }
+					}
+				}
+			}
+			getChildren(ul);
+			
+			console.log(document.getElementById("zht"));
+			console.log(document.getElementsByClassName("zht"));
+		</script>
+	</body>
+</html>

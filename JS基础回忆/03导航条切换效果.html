@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+				text-decoration: none;
+			}
+			ul{
+				overflow: hidden;
+				text-align: center;
+			}
+			li{
+				/*float: left;*/
+				width: 20%;
+				line-height: 50px;
+				background: #333;
+			}
+			li.active{
+				background: red;
+			}
+			a{
+				color: #fff;
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li class="active"><a href="#">首页1</a></li>
+			<li><a href="#">首页2</a></li>
+			<li><a href="#">首页3</a></li>
+			<li><a href="#">首页4</a></li>
+			<li><a href="#">首页5</a></li>
+		</ul>
+		
+		<script type="text/javascript">
+			var lis=document.getElementsByTagName("li");
+			for(var i=0;i<lis.length;i++){//5<5
+				lis[i].onclick=function(){
+					for(var i=0;i<lis.length;i++){
+						lis[i].className="";
+					}
+					this.className="active";
+				
+				}
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function round(num,d){
+				num=parseFloat(num);
+				d=parseFloat(d);
+				if(!isNaN(num) && !isNaN(d)){
+					num*=Math.pow(10,d);
+					num=Math.round(num);
+					num/=Math.pow(10,d);
+					return num;
+				}else{
+					throw new Error("传入的参数必须是一个数字，或者可以转为数字");
+				}
+			}
+			
+			
+			//try...catch
+			var num=parseFloat(prompt("请输入一个数字"));
+			var d=parseFloat(prompt("请输入一个保留小数位数"));
+
+
+			if(!isNaN(num) && !isNaN(d)){
+				round(num,d)
+			}else{
+				console.log("必须是数字")
+			}
+			
+			
+			console.log("后续操作");
+		</script>
+	</body>
+</html>

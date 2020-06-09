@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="bd">
+		<script type="text/javascript">
+		
+			
+			console.time("计时");
+			var frag=document.createDocumentFragment();
+			for(var i=1;i<=50000;i++){
+				var div=document.createElement("div");
+				div.innerHTML="我是div"+i;
+				frag.appendChild(div);//每次都在修改DOM树
+			}
+			bd.appendChild(frag);
+			console.timeEnd("计时");
+			
+
+		</script>
+	</body>
+</html>

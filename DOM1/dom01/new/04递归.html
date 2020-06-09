@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li>电影
+				<ul>
+					<li>为师去哪儿</li>
+					<li>极限为师</li>
+					<li>奔跑为师</li>
+				</ul>
+			</li>
+			<li>综艺
+				<ul>
+					<li>为师去哪儿</li>
+					<li>极限为师
+						<ul>
+							<li>为师去哪儿</li>
+							<li>极限为师</li>
+							<li>奔跑为师</li>
+						</ul>
+					</li>
+					<li>奔跑为师</li>
+				</ul>
+			</li>
+			<li>剧集
+				<ul>
+					<li>为师去哪儿</li>
+					<li>极限为师</li>
+					<li>奔跑为师</li>
+				</ul>
+			</li>
+		</ul>
+		
+		<script type="text/javascript">
+			//递归
+//			function getchildren(x){
+//				x.style.border="1px solid #000";
+//				
+//				for(var i=0;i<x.children.length;i++){
+//					getchildren(x.children[i]);
+//				}
+//			}
+//			getchildren(ul)
+//			
+//			//treewalker
+//			function getchildren(x){
+//				var tw=document.createTreeWalker(
+//					x,
+//					NodeFilter.SHOW_ELEMENT,
+//					null,false
+//				);
+//				
+//				while((node=tw.nextNode())!=null){
+//					node.style.border="1px solid #000";
+//				}
+//			}
+//			getchildren(ul);
+
+//			function getchildren(x){
+//				var root=x;
+//				while(true){
+//					x.style.border="1px solid #000";
+//					if(x.firstElementChild){
+//						x=x.firstElementChild
+//					}else if(x.nextElementSibling){
+//						x=x.nextElementSibling
+//					}else{//既没有儿子，也没有兄弟，就找爹的兄弟
+//						  //如果爹没有兄弟，就跳到父节点上，继续向上找
+//						while(!x.parentNode.nextElementSibling && x!=root.lastElementChild){
+//							x=x.parentNode;
+//						}
+//						x=x.parentNode.nextElementSibling;
+//						
+//						if(x==root.lastElementChild){
+//							x.style.border="1px solid #000";
+//							break;
+//						}
+//					}
+//				}
+//			}
+//			getchildren(ul);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>动态操作表格</title>
+<meta charset="utf-8" />
+<style>
+	table{width:500px; border-collapse:collapse;
+		text-align:center;
+		margin: 0 auto;
+		table-layout: fixed;
+	}
+	td{border:1px solid #ccc}
+	thead td{font-weight:bold;}
+</style>
+<script>
+	var data=[
+		{"id":1001,"name":'可口可乐',"price":2.5,"count":3000},
+		{"id":1003,"name":'百事可乐',"price":2.5,"count":5000},
+		{"id":1011,"name":'非常可乐',"price":2.3,"count":1000}
+	];
+	//根据数据生成一个表格
+	
+</script>
+</head>
+<body>
+	<div id="data1"></div>
+</body>
+<script type="text/javascript">
+	var tr=document.createElement("tr");
+	var table=document.createElement("table");
+		 for(var i in data[0]){
+		 	console.log(i);
+		 	var td =document.createElement("td");
+		 	td.innerHTML=i;
+		 	tr.appendChild(td);
+		 }
+			var last_td =document.createElement("td");
+		 	last_td.innerHTML="delete";
+		 	tr.appendChild(last_td)
+		 	table.appendChild(tr);
+		for(var i=0;i<data.length;i++){
+			var tr=document.createElement("tr");
+			for(var j in data[i]){
+				var td=document.createElement("td");
+				td.innerHTML=data[i][j];
+				tr.appendChild(td);
+			}
+			var last_td =document.createElement("td");
+			last_td.innerHTML="X";
+			tr.appendChild(last_td)
+			table.appendChild(tr);
+		}
+		data1.appendChild(table)
+		var del=document.querySelectorAll("tr>td:last-child");
+		for(var i=0;i<del.length;i++){
+			del[i].onclick=function(){
+				this.parentNode.parentNode.removeChild(this.parentNode);
+			}
+		}
+</script>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8" />
+ </head>
+
+ <body>
+  <table id="tbl">
+		<thead></thead>
+		<tbody>
+			<tr>
+				<td>iphone6</td>
+				<td>4488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>4488</td>
+			</tr>
+			<tr>
+				<td>iphone7</td>
+				<td>5488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>5488</td>
+			</tr>
+			<tr>
+				<td>iphone8</td>
+				<td>6488</td>
+				<td>
+					<button>-</button>
+					<span>1</span>
+					<button>+</button>
+				</td>
+				<td>6488</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">总计:</td>
+				<td id="total1">0</td>
+			</tr>
+		</tfoot>
+	</table>
+	
+	<script type="text/javascript">
+		//找到所有的按钮
+		var btns=document.getElementsByTagName("button");
+		//循环为每个按钮绑定点击事件
+		for(var i=0;i<btns.length;i++){
+			btns[i].onclick=function(){
+				//this在事件中使用，代表当前绑定事件的人，但是如果有多个人都绑定了事件，那么代表当前触发事件的人	
+				//获取this表示我当前点击的人，由于+和-做的操作不一样
+				//区分开用户点击的是+还是-
+				if(this.innerHTML=="+"){
+					f2(1,this)
+				}else{
+					
+					f2(0,this)
+				}
+				f1();
+			}
+		}
+		f1();
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		function f1(){
+			var tbody=document.getElementsByTagName("tbody")[0];
+				var trs=tbody.getElementsByTagName("tr");
+				var money=0;
+				for(var i=0;i<trs.length;i++){
+					var tds=trs[i].children;
+					var total=parseInt(tds[tds.length-1].innerHTML);
+					money+=total
+				}
+				total1.innerHTML=money;
+		}
+		
+		function f2(x,btn){
+			if(x==1){
+				//获取保存数量的元素
+				var span=btn.previousElementSibling;
+				//取出数量的文字，再+1
+				var spanV=parseInt(span.innerHTML)+1;
+				//重新放到页面上
+				span.innerHTML=spanV;
+			}else{
+				var span=btn.nextElementSibling;
+				//取出数量的文字，再+1
+				if(span.innerHTML>1){
+					var spanV=parseInt(span.innerHTML)-1;
+					//重新放到页面上
+					span.innerHTML=spanV;
+				}else{
+					spanV=1;
+				}
+			}
+			//获取单价
+			var price=parseInt(btn.parentNode.previousElementSibling.innerHTML);
+					
+			//计算小计
+			var total=price*spanV;
+			console.log(spanV);
+			//将小计放到页面上
+			btn.parentNode.nextElementSibling.innerHTML=total;
+		}
+	</script>
+	
+ </body>
+</html>

@@ -1,0 +1,34 @@
+1、String API：
+   1、转义字符：\
+	1、和字符串冲突的符号，需要使用："\" \\";
+	2、功能符号：\n换行	\t制表符
+	3、\uXXXX	\u4e00 \u9fa5
+
+   2、转换大小写：忽略大小写
+	大写：str.toUpperCase();
+	小写：str.toLowerCase();
+
+   3、获取指定位置的字符：str.charAt(i) == str[i];
+
+   4、获取指定位置的字符的unicode号：
+	str.charCodeAt(i)
+      将unicode号转回原文
+	String.fromCharCode(num);
+
+   5、截取字符串
+       *str/arr.slice(starti,endi+1);//支持负数参数
+	str.substring(starti,endi+1);
+	str.substr(starti,n);//n代表个数，不必考虑含头不含尾
+
+   6、分割字符串
+	str.split("自定义切割符"/reg); //返回是一个数组，实现将字符串转为数组
+
+   7、替换字符串：
+	str.replace("关键词"/reg,"替换内容");
+
+   8、拼接字符串：
+	str.concat(str1,str2...); == +运算
+
+   9、检索字符串：
+	var i=str/arr.indexOf("关键词",fromi);
+	没找到返回的是-1，判断在字符串或者数组中有没有某个元素

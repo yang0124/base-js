@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var height=parseFloat(prompt("请输入您的身高（m）"));
+			var weight=parseFloat(prompt("请输入您的体重（kg）"));
+			
+			var klt=weight/(height*height);
+			if(klt>25){
+				console.log("胖了");
+			}else if(klt<20){
+				console.log("瘦了");
+			}else{
+				console.log("正常");
+			}
+		</script>
+	</body>
+</html>

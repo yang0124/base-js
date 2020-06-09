@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//根据不同的屏幕大小可以获得最大可用的left和top
+			var w=200;
+			var h=200;
+			var maxW=outerWidth-w;
+			var maxH=outerHeight-h;
+			var rl=parseInt(Math.random()*(maxW+1));
+			var rt=parseInt(Math.random()*(maxH+1));
+			
+			var pop=window.open("about:blank","xx",`width=${w},height=${h},left=${rl},top=${rt}`);
+			pop.onmouseover=function(e){
+				while(true){
+					var rl=parseInt(Math.random()*(maxW+1));
+					var rt=parseInt(Math.random()*(maxH+1));
+					if(!(rl<e.screenX && e.screenX<rl+w && rt<e.screenY && e.screenY<rt+h)){
+						this.moveTo(rl,rt);
+						break;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

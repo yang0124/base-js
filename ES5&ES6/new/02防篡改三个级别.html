@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var eric={"id":1001,"name":"eric","salary":15000};
+			//防扩展
+//			Object.preventExtensions(eric);
+
+			//密封
+//			Object.seal(eric);
+
+			//冻结
+			Object.freeze(eric);
+			
+			eric.salary1=1500;
+			eric.salary=1500;
+			delete eric.salary;
+			console.log(eric);
+		</script>
+	</body>
+</html>

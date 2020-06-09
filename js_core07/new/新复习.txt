@@ -1,0 +1,55 @@
+1、错误处理
+   1、抛出错误：throw new Error("自定义错误信息"); -- 毕竟也是报错，就会卡主后续代码
+
+   2、如何错误处理：
+	try{
+		可能出错的代码
+	}catch(err){
+		错误后执行的代码//alert("错误提示");
+	}finally{
+		任何时候都会执行的代码;可以省略不写;
+	}
+
+	console.log("111");
+
+   注意：try...catch...效率低下，都用if...else...进行代替
+
+	if(d>=0 && d<=100){
+		num.toFixed(d);
+	}else{
+		console.log("d的范围必须在0~100之间");
+	}
+   几乎所有的用户输入咱们都要提前判断
+
+   错误对象的类型：6种
+	SyntaxError：语法错误 - 符号错误。
+	TypeError：类型错误 - 不是你的方法，你却在使用。
+	ReferenceError：引用错误 - 没有创建直接使用。
+	RangeError：范围错误 - toFixed(d);
+
+	EvalError/URIError
+	
+2、*****Function：
+   js中一切都是对象
+   构造函数方式：var 函数名=new Function("a","b","return a-b;");
+
+   *****重载：相同的函数名，根据传入的实参的不同可以执行不同的操作
+	函数中有一个对象：arguments可以接住所有的实参
+		arguments.length;
+		arguments[i];
+		循环遍历得到每一个
+		if(arguments.length==0){}
+		else if(arguments.length==1){}
+
+  *****匿名函数：
+	自调：
+		(function(){})();
+
+	回调：
+		arr.sort(function(){})
+
+
+		function sort(x){
+			//先做了sort自己的操作
+			//在调用x();
+		}

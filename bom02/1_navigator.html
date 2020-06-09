@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title> new document </title>
+  <meta charset="utf-8" />
+	<script>
+/*判断cookie是否启用
+		//chrome->设置->高级->隐私->内容设置->阻止xxx
+		//如果cookie已启用，就提示
+		if(navigator.cookieEnabled){
+	document.write("<h1>cookie已启用，请妥善保存个人信息</h1>");
+		}else{//否则
+	document.write("<h1>cookie已禁用，记住密码功能无法使用</h1>");
+		}
+*/
+/*判断插件
+		function checkPlugin(pname){
+			//遍历navigator的plugins集合
+			for(var i=0;i<navigator.plugins.length;i++){
+				//如果当前插件对象的name属性转为小写后，能够找到pname转为小写的内容
+				if(navigator.plugins[i].name.toLowerCase()
+									.indexOf(pname.toLowerCase())!=-1){
+					return true;//返回true
+				}
+			}//(遍历结束)返回false
+			return false;
+		}
+		if(checkPlugin("alipay")){
+			document.write("<h1>支持阿里安全支付插件</h1>");
+		}else{
+			document.write("<h1>未安装阿里安全支付插件</h1>");
+		}
+*/
+/*判断浏览器名称和版本号*/
+		//document.write(navigator.userAgent);
+		var browser="unknown";
+		var version="unknown";
+		//判断浏览器名称:
+		//如果userAgent中能找到"MSIE"
+		if(navigator.userAgent.indexOf("MSIE")!=-1){
+			browser="IE";//设置browser为"IE"
+		}else if(navigator.userAgent.indexOf("Firefox")!=-1){
+			//否则，如果userAgent中能找到"Firefox"
+			browser="Firefox";//设置browser为"Firefox"
+		}else if(navigator.userAgent.indexOf("OPR")!=-1){
+			//否则，如果userAgent中能找到"OPR"
+			browser="Opera";//设置browser为"Opera"
+		}else if(navigator.userAgent.indexOf("Chrome")!=-1){
+			//否则，如果userAgent中能找到"Chrome"
+			browser="Chrome";//设置browser为"Chrome"
+		}else if(navigator.userAgent.indexOf("Safari")!=-1){
+			//否则，如果userAgent中能找到"Safari"
+			browser="Safari";//设置browser为"Safari"
+		}else if(navigator.userAgent.indexOf("Trident")!=-1){
+			//否则，如果userAgent中能找到"Trident"
+			browser="IE";//设置browser为"IE"
+		}
+		document.write("<h1>浏览器名称: "+browser+"</h1>");
+
+		//判断版本号: 
+		if(browser!="unknown"){//如果browser不等于unknown
+			if(browser=="Opera"){//如果browser为"Opera"
+				//查找userAgent中OPR的位置i
+				var i=navigator.userAgent.indexOf("OPR");
+				i+=4;//将i+3+1
+				//截取userAgent中i之后3为，转为浮点数，保存在变量version中
+				version=
+					parseFloat(navigator.userAgent.slice(i,i+3));
+			}else if(browser=="IE"){//否则 如果browser为"IE"
+				//查找userAgent中MSIE的位置i
+				var i=navigator.userAgent.indexOf("MSIE");
+				//如果i等于-1，就设置version为11
+				if(i==-1){version=11;}
+				else{//否则
+					i+=5;//将i+4+1
+					//截取userAgent中i之后3为，转为浮点数，保存在变量version中
+					version=
+						parseFloat(navigator.userAgent.slice(i,i+3));
+				}
+			}else{//否则
+				//查找userAgent中browser的位置i
+				var i=navigator.userAgent.indexOf(browser);
+				i+=browser.length+1;//将i+browser.length+1
+				//截取userAgent中i之后3为，转为浮点数，保存在变量version中
+				version=
+						parseFloat(navigator.userAgent.slice(i,i+3));
+			}
+		}
+		document.write("<h1>版本号为: "+version+"</h1>");
+	</script>
+ </head>
+
+ <body>
+  
+ </body>
+</html>

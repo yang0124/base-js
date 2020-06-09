@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.red,.blue{
+				width: 30px;
+				line-height: 30px;
+				border-radius: 50%;
+				text-align: center;
+				color: #fff;
+				display: inline-block;
+				margin: 0 10px;
+			}
+			.red{
+				background: red;
+			}
+			.blue{
+				background: blue;
+			}
+		</style>
+	</head>
+	<body id="bd">
+		<button id="btn">机选双色球</button>
+		<script type="text/javascript">
+			function doubleBall(){
+				var reds=[];//1
+				while(reds.length<6){//1 //div div
+					var r=parseInt(Math.random()*(33-1+1)+1);
+					if(reds.indexOf(r)==-1){
+						reds.push(r);
+					}
+				}
+//				var max=document.createElement("div");
+//				var blue=parseInt(Math.random()*(16-1+1)+1);
+				
+//				reds.sort(function(a,b){return a-b});
+//				
+//				for(var i=0;i<reds.length;i++){
+//					var div=document.createElement("div");
+//					div.innerHTML=reds[i];
+//					div.className="red";
+//					max.appendChild(div);
+//				}
+//				
+//				var div=document.createElement("div");
+//				div.innerHTML=blue;
+//				div.className="blue";
+//				max.appendChild(div);
+//				
+//				bd.appendChild(max);
+			}
+			
+//			btn.onclick=function(){
+//				doubleBall();
+//			}
+		</script>
+	</body>
+</html>

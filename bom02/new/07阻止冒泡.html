@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			#d1{
+				width: 300px;
+				height: 300px;
+				background: red;
+				overflow: hidden;
+			}
+			#d2{
+				width: 200px;
+				height: 200px;
+				background: green;
+				margin: 50px auto;
+				overflow: hidden;
+			}
+			#d3{
+				width: 100px;
+				height: 100px;
+				background: blue;
+				margin: 50px auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			<div id="d2">
+				<div id="d3"></div>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+//			var divs=document.getElementsByTagName("div");
+//			for(var i=0;i<divs.length;i++){
+//				divs[i].onclick=function(){
+//					this.style.background="yellow";
+//					alert(this.id);//this会跟着变化
+//					this.style.background="";
+//				}
+//			}
+
+			d1.addEventListener("click",highlight)
+			d2.addEventListener("click",highlight)
+			d3.addEventListener("click",highlight)
+			
+			function highlight(e){
+				e=e||window.event;
+				if(e.stopPropagation){
+					e.stopPropagation();
+				}else{
+					e.cancelBubble=true;
+				}
+				this.style.background="yellow";
+				alert(this.id);//this会跟着变化
+				this.style.background="";
+			}
+		</script>
+	</body>
+</html>

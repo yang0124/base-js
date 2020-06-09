@@ -1,0 +1,23 @@
+查找元素
+1、通过节点之间的关系
+   父子：parentNode children firstElementChild lastElementChild
+   兄弟：previousElementSibling nextElementSibling
+
+2、递归：函数内又一次调用了自己（又可以遍历元素，也可以遍历数据）
+   何时使用：层级深度不明确
+   1、第一层（儿子）要做什么，就直接做
+   2、判断你的儿子有没有儿子，有的话继续调用此函数
+
+3、遍历API：
+   1、创建
+
+   2、反复调用
+
+4、按ID
+   按class
+   按tagname
+   按name
+
+   按选择器查找
+	单个：document.querySelector("任意css选择器")
+	多个：document.querySelectorAll("任意css选择器")

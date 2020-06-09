@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div onmouseout="eat()">吃饭</div>
+		<button onclick="klt1()">klt</button>
+		<button onclick="getScore()">根据分数送礼物</button>
+		<script type="text/javascript">
+			function eat(){
+				console.log("开饭啦");
+			}
+
+			function klt1(){
+				var height=parseFloat(prompt("请输入您的身高（m）"));
+				var weight=parseFloat(prompt("请输入您的体重（kg）"));
+				
+				if(!isNaN(height) && !isNaN(weight)){
+					var klt=weight/(height*height);
+					if(klt>25){
+						console.log("胖了");
+					}else if(klt<20){
+						console.log("瘦了");
+					}else{
+						console.log("正常");
+					}
+				}else{
+					console.log("恶意输入");
+					klt1();
+				}
+			}
+			
+			function getScore(){
+				var height=parseFloat(prompt("请输入您的身高（m）"));
+				if(!isNaN(height)){
+					if(height>=60){
+						console.log("兰博基尼");
+					}else{
+						console.log("烟锅巴");
+					}
+				}else{
+					console.log("恶意输入");
+					getScore();
+				}
+			}
+			getScore();
+		</script>
+	</body>
+</html>

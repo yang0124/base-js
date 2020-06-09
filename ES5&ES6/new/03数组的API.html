@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr1=[1,2,3,4,5];
+			var arr2=[2,4,6,8,10];
+//			function even(arr){
+//				for(var i=0;i<arr.length;i++){
+//					if(arr[i]%2!=0){
+//						return false;
+//					}
+//				}
+//				return true;
+//			}
+//			console.log(even(arr1));
+//			var bool=arr2.every(val=>val%2==0)
+//			var bool=arr2.every(function(val,i,arr){
+//				return val%2==0;
+//			})
+//			console.log(bool);
+
+
+//			var arr1=[4,21,5,8,2];
+			var arr2=[2,4,6,8,10];
+//			
+//			function compare(arr){
+//				for(var i=0;i<arr.length;i++){
+//					if(i==arr.length-1){return true}
+//					if(arr[i]>=arr[i+1]){
+//						return false;
+//					}
+//				}
+//			}
+//			console.log(compare(arr2));
+			
+			
+//			var bool=arr2.every((val,i,arr)=>{
+//				if(i==arr.length-1){return true}
+//				return val<=arr[i+1];
+//			})
+////			
+//			console.log(bool);
+
+//			var arr1=[1,2,3,4,5];
+//			
+//			var bool=arr1.some(val=>val%2==0)
+//			console.log(bool);
+
+
+			var arr1=[1,2,3,4,5];
+//			var newArr=[];
+//			for(var i=0;i<arr1.length;i++){
+//				newArr.push(arr1[i]*2);
+//			}
+//			
+//			
+			arr1.forEach((val,i,arr)=>arr[i]=val*2)
+//
+////			var newArr=arr1.map(function(val,i,arr){
+////				return val*2;
+////			})
+			console.log(arr1);
+//			console.log(newArr);
+
+
+//			var arr1=[1,2,3,4,5];
+//			var subArr=[];
+//			for(var i=0;i<arr1.length;i++){
+//				if(arr1[i]%2==1){
+//					subArr.push(arr1[i]);
+//				}
+//			}
+//			
+//			var subArr=arr1.filter(function(val,i,arr){
+//				return val%2==1;
+//			})
+//			console.log(arr1);
+//			console.log(subArr);
+
+//			var arr1=[1,2,3,4,5];//15
+//			var arr2=[2,4,6,8,9];//29
+////			for(var i=0,sum=0;i<arr1.length;i++){
+////				sum+=arr1[i]
+////			}
+//
+//			var result1=arr1.reduce(function(prev,val,i,arr){
+//				return prev+val;
+//			})
+//			var result2=arr2.reduce(function(prev,val,i,arr){
+//				return prev+val;
+//			},result1);
+//			console.log(result2);
+		</script>
+	</body>
+</html>

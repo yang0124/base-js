@@ -1,0 +1,88 @@
+1、变量
+   var 变量名=变量值;
+
+2、常量
+   const 常量名=常量值;
+
+3、数据类型
+   原始（值/基本）类型：5个（number/string/boolean/undefined/null）
+   引用类型：11个
+
+4、数据类型转换
+   隐式转换：代码悄悄自动转：算术运算，默认转为数字，+运算有字符串就转为字符串拼接
+   强制转换：
+	1、x.toString()
+	2、parseInt(x); //str->num
+	3、parseFloat(x);//str->num
+	4、Number(x); //隐式转换
+
+5、分支
+   if
+
+6、循环
+   while(){}
+   for(var i=0;i<10;i++){console.log(i)}
+
+7、数组
+   var arr=[1,2,3,4,5,6]
+   arr[2];
+   for(var i=0;i<arr.length;i++){
+	arr[i];
+   }
+-----------------------------------------------------------------------------------
+
+8、DOM：Document Object Model 文档对象模型，专门用于操作文档（HTML/CSS）
+   DOM树：把HTML看做了一个倒挂的树状结构
+	  树根：document对象(属性和方法)
+	        不需要创建，浏览器的js解释器帮助我们自动创建
+
+   1、获取元素
+      var elem=document.getElementById("id");
+      找到：DOM元素/对象/节点，就可以做操作
+      没找到：null
+
+      var elems=document/node.getElementsByTagName("标签名");
+      找到：DOM集合，不能直接操作，必须用下标获取某个，获取循环获取所有
+      没找到：[]
+
+      var elems=document/node.getElementsByClassName("class");
+      原理同上
+
+      父：elem.parentNode; -- DOM元素
+      子：elem.children; -- DOM集合
+      上一个兄弟：elem.previousElementSibling; -- DOM元素
+      下一个兄弟：elem.nextElementSibling; -- DOM元素
+  
+   2、操作元素
+      元素的内容
+	elem.innerHTML="新值"
+
+      元素的属性
+	核心DOM：万能，什么都可以操作
+	获取：elem.getAttribute("属性名");
+	设置：elem.setAttribute("属性名","属性值");
+
+	HTML DOM：简单，但是不能操作自定义属性
+	获取：elem.属性名; 特殊：class->className;
+	设置：elem.属性名="属性值";
+
+      元素的样式
+	获取：elem.style.css属性名;	//只能获取内联样式
+	设置：elem.style.css属性名="css属性值";
+
+	css属性名有横线的部分要省略，并且变为驼峰命名
+	   border-top-color	borderTopColor
+
+
+
+
+
+
+
+
+
+
+
+
+
+

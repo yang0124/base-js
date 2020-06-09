@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="bd">
+		<h1 id="h1">lalala</h1>
+		<div id="d1">lalala</div>
+		<p id="p1">lalalal</p>
+		<!--DSADSADSADSADSA-->
+		<script type="text/javascript">
+			
+//			console.log(document.nodeType);
+//			console.log(h1.nodeValue);
+//			console.log(h1.nodeType);
+//			console.log(d1.nodeType);
+//			console.log(p1.nodeType);
+
+//			console.log(bd.childNodes);
+//			console.log(bd.childNodes[7].nodeType);
+
+//			console.log(h1.nodeName);
+//			console.log(d1.nodeName);
+//			console.log(p1.nodeName);
+			
+			var childes=bd.children;
+			for(var i=0;i<childes.length-1;i++){
+				childes[i].onclick=function(){
+					if(this.nodeName=="H1"){
+						alert("我是H1");
+					}else if(this.nodeName=="P"){
+						alert("我是P");
+					}else if(this.nodeName=="DIV"){
+						alert("我是DIV");
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

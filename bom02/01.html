@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn1">跳转1</button>
+		<button id="btn2">跳转2</button>
+		<button id="btn3">跳转3</button>
+	</body>
+	<script type="text/javascript">
+		console.log(location);
+		console.log(location.protocol);//协议
+		console.log(location.host);//主机名+端口号
+		console.log(location.port);//端口号
+		console.log(location.pathname);//相对路径名
+		console.log(location.search);//查询字符串
+		
+		btn1.onclick=function(){//跳转，禁止返回
+			location.replace("http://www.jd.com");	
+		}
+		btn2.onclick=function(){//跳转链接的方法
+//			location="http://www.jd.com";
+//			location.href="http://www.jd.com";
+			location.assign("http://www.jd.com");
+		}
+		btn3.onclick=function(){//跳转链接的方法
+			location.reload();
+		}
+	</script>
+</html>

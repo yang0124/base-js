@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="javascript:alert(1)" id="a" class="a" onclick="jump()" >123456</a>
+		<script type="text/javascript">
+			console.log(a.attributes);
+			console.log(a.attributes[1].value);
+			console.log(a.attributes["class"].value);
+			console.log(a.getAttributeNode("href").value);
+			console.log(a.getAttribute("href"));
+			a.setAttribute("name","fuck");
+			
+			a.setAttribute("nima","nimei");
+			console.log(a.getAttribute("nima"));
+			console.log(a.name);
+			a.nima="you";
+			a.className="b";
+			a.removeAttribute("class");
+//			a.id="";
+			console.log(a.hasAttribute("class"));
+			console.log(a.className!="");
+		</script>
+	</body>
+</html>

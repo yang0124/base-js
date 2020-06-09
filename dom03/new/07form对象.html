@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<form action="" method="post">
+			用户名：<input type="text" /><br>
+			<input type="submit"/>
+		</form>
+		<form action="" method="post">
+			用户名：<input type="text" /><br>
+			用户名：<input type="text" /><br>
+			用户名：<input type="text" /><br>
+			用户名：<input type="text" /><br>
+			用户名：<input type="text" /><br>
+			<input type="submit"/>
+		</form>
+		<form action="" method="post">
+			用户名：<input type="text" /><br>
+			<input type="submit"/>
+		</form>-->
+		
+		<form id="form" action="" method="post">
+			用户名: <input id="uname" /><br>
+			密码名: <input id="upwd" /><br>
+			<input type="submit"/>
+		</form>
+		
+		<script type="text/javascript">
+//			var form=document.forms[1];
+//			form.elements[2].focus();
+
+			form.onsubmit=function(){
+				if(uname.value==""){
+					uname.focus();
+					return false;
+				}
+				if(upwd.value==""){
+					upwd.focus();
+					return false;
+				}
+			}
+		</script>
+	</body>
+</html>

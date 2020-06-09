@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 300px;
+				border: 1px solid #ccc;
+				margin: 0 auto;
+			}
+			textarea{
+				width: 100%;
+				height: 100px;
+				resize: none;
+				padding: 0;
+				border:none;
+				border-bottom: 1px solid #ccc;
+			}
+			button{
+				float: left;
+				width: 33.33%;
+				height: 50px;
+			}
+			p{
+				clear: both;
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<textarea id="txt" readonly=""></textarea>
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+			<button>6</button>
+			<button>7</button>
+			<button>8</button>
+			<button>9</button>
+			<button>0</button>
+			<button>.</button>
+			<button>+</button>
+			<button>-</button>
+			<button>*</button>
+			<button>/</button>
+			<button>%</button>
+			<button>C</button>
+			<button>=</button>
+			<p></p>
+		</div>
+		<script type="text/javascript">
+			var btns=document.getElementsByTagName("button");
+			for(var i=0;i<btns.length;i++){
+				btns[i].onclick=function(){
+					if(this.innerHTML=="="){
+						txt.innerHTML=eval(txt.innerHTML);
+					}else if(this.innerHTML=="C"){
+						txt.innerHTML="";
+					}else{
+						txt.innerHTML+=this.innerHTML;
+					}
+				}
+			}
+			
+		</script>
+	</body>
+</html>

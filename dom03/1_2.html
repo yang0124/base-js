@@ -1,0 +1,61 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>二级联动列表</title>
+<meta charset="utf-8" />
+<style>
+	.hide{ display: none; }
+</style>
+<script>
+	/*实现“省”和“市”的级联下拉列表JSON*/
+	var cities=[
+		[],		/*0号下标没有元素*/
+		[{"name":'东城区',"value":101},
+		 {"name":'西城区',"value":102},
+		 {"name":'海淀区',"value":103},
+		 {"name":'朝阳区',"value":104},],
+		[{"name":'河东区',"value":201},
+		 {"name":'河西区',"value":202},
+		 {"name":'南开区',"value":203}],
+		[{"name":'石家庄市',"value":301},
+		 {"name":'廊坊市',"value":302},
+		 {"name":'保定市',"value":303},
+		 {"name":'唐山市',"value":304},
+		 {"name":'秦皇岛市',"value":305}]
+	];
+</script>
+
+</head>
+<body>
+	<select name="provs">
+		<option>—请选择—</option><!--0-->
+		<option>北京市</option><!--selectedIndex 1-->
+		<option>天津市</option>
+		<option>河北省</option>
+	</select>
+	
+	<select name="cities" class="hide">
+		
+	</select>
+	
+	<script>
+		var select =document.getElementsByTagName("select");
+		select[0].onchange=function(){
+			var x=select[0].selectedIndex;
+			 var sj=cities[x];
+//			 console.log(sj);
+				if(x==0){
+					select[1].className="hide";
+				}else{
+					select[1].innerHTML="";
+					for(var i=0;i<sj.length;i++){
+						select[1].className="";
+				 		var opt =new Option(sj[i].name,sj[i].value);
+				 		select[1].add(opt);
+					}
+				}
+					
+			}		
+	</script>
+</body>
+</html>

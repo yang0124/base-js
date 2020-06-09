@@ -1,0 +1,143 @@
+1、BOM对象：history location navigator
+   1、history：保存当前窗口*打开过*的url的历史记录栈
+	操作：前进：history.go(1);
+	      后退：history.go(-1);
+	      刷新：history.go(0);
+	必须要有历史记录过后才可以前进后退
+
+   2、*location：保存当前窗口*正在打开的*url地址。
+     ***常识：url由哪些部分组成！
+	注意：协议://域名:端口号/文件路径?查询字符串
+	协议：http||https
+	域名：www.xxx.com || 如果没有买域名那么其实是一个主机号：127.0.0.1
+	端口：http默认80,https默认443，默认端口可以不用写出来
+	文件路径：/html/index.html
+	查询字符串：跟你表单提交相关的内容？
+	
+	操作：跳转：*location="新url";
+		     location.href="新url";
+		     location.assign("新url");
+
+	      跳转禁止后退：location.replace("新URL");
+
+	      刷新：location.reload();
+
+   3、***navigator：封装浏览器配置信息的对象
+	 cookieEnabled：识别浏览器是否启用了cookie
+		如果启用，返回true，否则返回false
+		作用：提示用户是否开启cookie
+
+	*userAgent：获取浏览器名称和版本号！
+		如何使用：使用str的api去获取你想要的部分
+	      作用：根据不同的浏览器或者不同版本号，可以对不同的浏览器实现不同的JS操作
+
+上午的练习：
+	1、判断浏览器的名称和版本号，并且对不同的浏览器执行不同的操作
+
+-----------------------------------------------------------------------------------
+现在会哪些事件？
+click/mouseover/mouseout/mousemove/change/focus/blur/submit/input/load/dblclick...
+
+2、*****event：
+   事件：用户手动触发或者浏览器自动触发的状态的改变
+   事件对象：在事件发生时，自动创建，专门封装事件信息的对象
+   事件处理函数：在事件发生时，自动调用
+
+   1、如何绑定事件：3种
+      1、在HTML中定义事件处理函数的内容
+	 <elem onXXX="js语句"></elem>
+
+	 缺点：1、不符合内容与行为的分离的元素
+	       2、无法动态绑定事件（只能一个一个的绑定）
+	       3、无法同时绑定多个函数对象
+
+      2、在js中使用元素的事件处理函数属性
+	 elem.onXXX=function(){}
+	 
+	 优点：1、符合内容与行为的分离的元素
+	       2、可以动态绑定事件
+	 缺点：1、无法同时绑定多个函数对象
+
+      3、使用专门的API绑定事件处理函数
+	 主流：elem.addEventListener("事件名",函数对象//不加小括号)
+	 老IE：elem.attachEvent("on事件名",函数对象)
+	       this -> elem;
+	
+	 兼容：if(elem.addEventListener){
+		  elem.addEventListener("事件名",函数对象)
+	       }else{
+		  elem.attachEvent("on事件名",函数对象)
+	       }
+
+	 优点：1、符合内容与行为的分离的元素
+	       2、可以动态绑定事件
+	       3、同时绑定多个函数对象
+
+   2、事件周期：
+      主流：3个阶段
+	    1、捕获阶段，由外向内
+		 捕获：记录所有要执行的事件处理函数
+	    2、目标触发
+		 目标元素：实际发生事件的元素
+	    3、由外向内，冒泡触发
+	顺序其实可以改变：
+	    elem.addEventListener("事件名",函数对象//不加小括号,true);
+	    如果加入了第三个参数true，会在捕获阶段就提前触发
+
+      老IE：2个阶段
+	    1、目标触发
+		 目标元素：实际发生事件的元素
+	    2、由外向内，冒泡触发
+	    根本就没有捕获阶段，所以不可能修改触发顺序
+
+      1、*****如何获取事件对象event
+	 主流：event会自动作为事件处理函数的第一个形参传入
+	 老IE：window全局有一个属性event可以获得事件对象
+	 兼容：elem.onXXX=function(e){
+		 e=e||window.event;
+	       }
+
+      2、*****如何阻止冒泡！
+	 1、获得事件对象e
+	 2、主流：e.stopPropagation();
+	    老IE：e.cancelBubble=true;
+	    兼容：if(e.stopPropagation){
+			e.stopPropagation();
+		  }else{
+			e.cancelBubble=true;
+		  }
+
+      3、******事件委托(利用冒泡)
+	 优化：如果多个子元素定义了相同的事件处理函数，最后只给父元素定义一次！
+	 为什么：每次绑定一个事件处理函数，其实都是创建一个事件监听对象，创建的对象越		 多网页效率就越低下
+
+	 获取目标元素：触发的元素
+	   主流：e.target;
+	   老IE：e.srcElement;
+	   兼容：var target=e.target||e.srcElement;
+
+      4、*****阻止浏览器的默认行为：
+	   主流：e.preventDefault();
+	   老IE：e.returnValue=false;
+	   兼容：if(e.preventDefault){
+			e.preventDefault();
+		 }else{
+			e.returnValue=false;
+		 }
+
+      5、移除事件绑定：
+	 elem.removeEventListener("事件名",函数对象);
+	 强调：remove时要求，移除的函数对象必须和添加的时候是同一个
+	 只要一个事件处理函数以后有可能会被移除，则使用第三种绑定事件方式
+	 如果一个事件处理函数永远不会移除，则使用第二种方式
+	   
+
+
+周末作业：
+    1、事件委托实现计算器，只帮一个事件
+    2、事件委托选项卡
+    3、判断浏览器的名称和版本
+    4、DOM的七个作业（尤其是根据数据生成页面）
+    5、轮播、选项卡、QQ注册、购物车
+    6、思维导图
+       整理好，星期一交给我

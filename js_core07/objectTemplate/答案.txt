@@ -1,0 +1,42 @@
+			var game={
+				"container":document.getElementsByClassName("container")[0],
+				"divs":document.getElementsByClassName("div"),
+				"img":document.getElementsByTagName("img")[1],
+				"start":function(){
+					this.cgl();
+					this.bind();
+				},
+				"cgl":function(){
+					this.container.style.left="0px";
+					this.container.style.transform="rotate(0deg)";
+				},
+				"bind":function(){
+					for(var i=0;i<this.divs.length-1;i++){
+						this.divs[i].onmouseover=function(){
+							game.yrc(this);
+						}
+						this.divs[i].onmouseout=function(){
+							game.yrc();
+						}
+					}
+				},
+				"yrc":function(people){
+					if(people!=undefined){
+						if(people.className=="div lilei"){
+							this.divs[2].style.display="block";
+							this.divs[2].innerHTML="大家好我是李雷，今年18岁";
+							this.img.style.display="block";
+						}else{
+							this.divs[2].style.display="block";
+							this.divs[2].innerHTML="大家好我是韩梅梅，今年19岁";
+							this.img.style.display="block";
+						}
+					}else{
+						this.divs[2].style.display="none";
+						this.img.style.display="none";
+					}	
+				}
+			}
+			window.onload=function(){
+				game.start();
+			}

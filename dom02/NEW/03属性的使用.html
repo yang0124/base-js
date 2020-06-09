@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button id="btn">变</button>
+		<a id="a" href="http://www.baidu.com">百度</a>
+		<script type="text/javascript">
+			btn.onclick=function(){
+				if(a.getAttribute("href")=="http://www.baidu.com"){
+					a.innerHTML="京东";
+					a.href="http://www.jd.com";
+				}else{
+					a.innerHTML="百度";
+					a.href="http://www.baidu.com";
+				}
+			}
+		</script>
+	</body>
+</html>

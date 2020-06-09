@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var arr=[1,2,3,4,5];
+////			arr.unshift(6);
+////			arr.unshift(7);
+////			arr.unshift(8);
+////			
+//////			var first=arr.shift();
+////		
+////			console.log(first);
+//
+//			arr.push(6,7,8);
+//			var last=arr.pop();
+//			console.log(last);
+//			console.log(arr);
+
+			var 肾1=5;
+			var queue=[];
+			for(var i=1;i<=5;i++){
+				var name="顾客"+i
+				queue.push(name);
+				alert(name+"开始排队");
+				console.log(queue);
+			}
+			
+			queue.push("你");
+			console.log(queue);
+			
+			
+			while(true){
+				肾1--;
+				var name=queue.shift();
+				alert("恭喜"+name+"抢购成功");
+				console.log(queue);
+				if(肾1==0){
+					break;
+				}
+			}
+			alert(queue+"没抢到");
+			
+			
+			
+			
+			
+		</script>
+	</body>
+</html>

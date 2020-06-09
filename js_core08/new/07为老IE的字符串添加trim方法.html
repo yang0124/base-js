@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var str="	hello world		";
+			var user="								My name is Skygood				";
+			
+			
+			if(String.prototype.trim===undefined){
+				String.prototype.trim=function(){
+					var reg=/^\s*|\s*$/g;
+					return this.replace(reg,"");
+				}
+			}
+			
+			console.log(str.trim());
+			console.log(user.trim());
+		</script>
+	</body>
+</html>

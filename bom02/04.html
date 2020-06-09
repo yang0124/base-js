@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="alert('已经弹出')">弹出框</button>
+		<button id="btn1">弹出框1</button>
+		<button id="btn2">弹出框2</button>
+	</body>
+	<script type="text/javascript">
+		btn1.onclick=function(){
+			alert(1);
+		}
+		btn1.onclick=function(){
+			alert(2);
+		}
+		var fn=function(){
+			alert(this);
+		}
+		var fn1=function(){
+			alert(1);
+		}
+//		btn2.addEventListener("click",fn);
+//		btn2.addEventListener("click",fn1);
+		
+		if(btn2.addEventListener==undefined){
+			btn2.attachEvent("onclick",fn);
+			btn2.attachEvent("onclick",fn1);
+		}
+//		btn2.click();
+		//调用时：
+//		btn1.onclick();
+	</script>
+</html>

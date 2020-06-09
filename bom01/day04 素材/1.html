@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>打开新链接方式总结</title>
+		<script>
+			/*打开新链接方式总结：
+1. 在当前窗口打开，可后退
+2. 在当前窗口打开，不可后退
+3. 在新窗口打开，可重复打开
+4. 在新窗口打开，不可重复打开
+*/
+			function goTo1(){//替换当前窗口，可后退: 
+				open("http://www.baidu.com","_self");
+			}
+			function goTo2(){//替换当前窗口，禁止后退:
+				location.replace("http://www.baidu.com");
+			}
+			function goTo3(){//在新窗口打开，可打开多个
+				open("http://www.baidu.com"/*,"_blank"*/);
+			}
+			function goTo4(){//在新窗口打开，可打开多个
+				open("http://www.baidu.com","t123");
+			}
+		</script>
+	</head>
+	<body>
+<a href="http://baidu.com">替换当前窗口，可后退</a><br>
+<a href="javascript:goTo1()">替换当前窗口，可后退(js)</a><br>
+<br>
+<a href="javascript:goTo2()">替换当前窗口，禁止后退(js)</a><br>
+<br>
+<a href="http://www.baidu.com" target="_blank">在新窗口打开，可打开多个</a><br>
+<a href="javascript:goTo3()">在新窗口打开，可打开多个(js)</a><br>
+<a href="http://www.baidu.com" target="123">在新窗口打开，仅能打开一个</a><br>
+<a href="javascript:goTo4()">在新窗口打开，仅能打开一个(js)</a><br>
+	</body>
+</html>

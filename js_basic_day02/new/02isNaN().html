@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		
+		<script type="text/javascript">
+			//只要是js从页面上获取来的所有的东西，都是字符串类型
+			var score=parseInt(prompt("请输入一个分数","0"));
+			//由于NaN和任何人做比较得到的结果都是false，所以没有办法通过普通的比较运算来验证是不是NaN
+			//isNaN(变量);
+//			console.log(score);
+//			console.log(!isNaN(score));
+			
+			
+			if(!isNaN(score) && score<=100 && score>=0){
+				if(score>=90){
+					console.log("兰博基尼");
+				}else if(score>=70){
+					console.log("自行车");
+				}else{
+					console.log("锭子皮托");
+				}
+			}else{
+				console.log("恶意输入");
+			}
+			
+		</script>
+		
+	</body>
+</html>

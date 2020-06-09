@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var user="00";
+			//正则默认，只要满足了，后续就不会在管了
+//			var reg=/^[12345678][09]$/;
+
+			//一位数字
+//			var reg=/^[0-9]$/
+			//一位字母
+//			var reg=/^[A-Za-z]$/
+			//一位数字，字母或者下划线
+//			var reg=/^[0-9A-Za-z_]$/
+			//一位汉子
+//			var reg=/^[\u4e00-\u9fa5]$/;
+			//排除
+			var reg=/^[^a]$/
+			
+			console.log(reg.test(user));
+		</script>
+	</body>
+</html>

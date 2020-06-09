@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+	<select id="unsel" size="6" multiple>
+		<option>Argentina</option>
+		<option>Brazil</option>
+		<option>Canada</option>
+		<option>Chile</option>
+		<option>China</option>
+		<option>Cuba</option>
+		<option>Denmark</option>
+		<option>Egypt</option>
+		<option>France</option>
+		<option>Greece</option>
+		<option>Spain</option>
+	</select>
+	<script type="text/javascript">
+		var select =document.getElementsByTagName("select")[0];
+		console.log(select);
+		select.onchange=function(){
+			var x=select.selectedIndex;
+			console.log(x);
+		}
+		
+	</script>
+	</body>
+</html>

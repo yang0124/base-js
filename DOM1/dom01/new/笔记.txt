@@ -1,0 +1,128 @@
+1、DOM概述
+   1、DOM：Document Object Model
+	文档	 对象	模型
+	专门操作网页内容（HTML/CSS）的API
+      DHTML：动态的网页：HTML+CSS+JS(dom)
+
+      DHTML模型：
+	DOM：W3C DOM标准，浏览器厂商几乎100%实现了DOM标准
+
+	BOM：Browser Object Model（event/定时器）
+	     浏览器对象模型：专门操作浏览器
+	     没有标注，所以，用的比较少，但是浏览器几乎也实现了大部分功能
+
+      DOM分为三类：本来DOM是可以操作一切结构化文档的：HTML/XML
+	核心DOM：可以操作一切结构化文档
+		 万能！但是API繁琐
+		 增删改查
+
+	HTML DOM：专门操作HTML文档，其实是基于核心DOM的一个简化版本
+		  API简洁！但是不是万能
+
+	XML DOM：垃圾
+
+        实际开发：优先使用HTML DOM，HTML DOM实现不了再使用核心DOM
+
+   2、***DOM Tree：保存所有网页内容的树状结构
+	 网页中每个内容(元素，文本，属性，注释...)都是树上的一个dom节点(元素，对象)
+	 真正的树根是document，每个节点都是一个对象：Node对象
+
+	 每个节点都有三大属性：
+	   1、nodeType：描述节点类型
+		DOCUMENT_NODE:9
+		ELEMENT_NODE:1
+
+	   2、nodeValue：描述节点内容
+		document:null
+		element:null
+
+	  *3、nodeName：描述节点名称
+		element:全大写的标签名 -- 区分让JS知道到底是什么元素
+
+   通过节点之间的关系获取元素：
+	1、父元素：parentNode
+	2、子元素：children
+	3、上一个兄弟：previousElementSibling
+	4、下一个兄弟：nextElementSibling
+
+2、*****递归：函数内，又一次调用了自己
+   遍历节点树：对每个子元素执行相同的操作
+   何时使用：遍历不确定层级深度的树状结构
+
+   如何实现递归：
+	1、创建函数，要做什么直接做
+	   
+
+	2、函数中开启判断，判断有没有下一级，
+	   有下一级继续调用此函数，只不过传入新的实参
+
+	算法：深度优先！优先遍历当前节点的子节点
+	      子节点遍历完，才跳到兄弟节点，
+	      如果没有兄弟节点则返回上一层，继续找有没有兄弟，找到最后
+
+	递归 vs 循环
+	1、递归：优：直观，易用
+	         缺：占用更多资源，效率低！
+	2、循环：优：几乎不占用资源，效率高！
+		 缺：难度大，代码量大
+
+***********************************************************************************
+   遍历API：
+   1、TreeWalker：如何使用：2步
+	1、创建
+	   var tw=document.createTreeWalker(
+		parent,
+		NodeFilter.SHOW_ALL/SHOW_ELEMENT,
+		null,false
+	   )
+	2、反复使用tw的nextNode();
+	   while((node=tw.nextNode())!=null){
+		node.style.border="1px solid #000";
+	   }
+
+	也是深度优先算法
+
+强调！！！：只要层级不确定的情况一定使用递归（不光遍历元素，还可以遍历数据）
+
+-----------------------------------------------------------------------------------
+
+3、***查找元素
+   1、按id查找：var elem=document.getElementById("id");
+
+   2、按标签名：var elems=document.getElementsByTagName("标签名");
+
+   3、按class名：var elems=document.getElementsByClassName("class名");
+
+   4、按Name名：var elems=document.getElementsByName("class名");
+
+-----------------------------------------------------------------------------------
+
+  *5、按选择器查找：var elem=document.querySelector("任意css选择器");
+		    没找到返回null
+		    强调：此方法就算有多个元素，也只会找到第一个
+
+		   如果希望找到所有选择器的元素：
+		    var elems=document.querySelectorAll("任意css选择器");
+
+   建议：复杂查找的时候优先使用querySelectXXX
+
+作业：
+  1、你随意的写HTML，3种遍历节点方式（递归，遍历API，循环）
+  2、day01素材：6_2 和 7_1.html
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

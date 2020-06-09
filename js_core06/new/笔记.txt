@@ -1,0 +1,96 @@
+1、Math：专门提供数学计算的API
+   强调：不用创建，直接使用！浏览器自动创建
+
+   API：
+   1、取整：3种
+      上取整：只要超过，就取下一个整数
+	Math.ceil(num);//小数位数最多只能是15位
+      下取整：不管超过多少，都省略小数部分
+	Math.floor(num);
+      四舍五入取整：
+	Math.round(num);
+      问题：只能取整//*parseInt || num^0 || num>>>0
+	vs *num.toFixed(n); 也可以四舍五入，但是返回的类型是一个字符串
+
+      鄙视题：自定义round方法，按任意小数位数四舍五入，返回的是一个数字类型
+		function round(num,d){
+			//将num乘以10的d次方
+			num*=Math.pow(10,d);//Math.pow(8,2); 
+			//将num四舍五入取整
+			num=Math.round(num);
+			//将num除以10的d次方
+			num/=Math.pow(10,d);
+			return num;
+		}
+		var num=round(3.455555,4);
+		console.log(num);
+
+   2、乘方和开方
+     *乘方：Math.pow(底数,幂);//10*10*10 == Math.pow(10,3);
+      开方：Math.sqrt(num);//只能开平方
+
+   3、最大值和最小值：返回参数中最大或最小的一个值
+	Math.max/min(num1,num2,num3,num4...);
+      问题：默认不支持数组参数
+      解决：*Math.max/min.apply(Math,arr);
+		apply具有借用的意思，数组本身不能使用Math.max，但是可以借
+		apply其实可以打散数组，将每个元素单独传入
+
+   4、绝对值：将负数转为正数
+	Math.abs(num);
+
+   5、***随机数：Math.random() 在0~1之间取随机小数
+		可能取到0，但是不可能取到1
+      随机整数公式：var r=parseInt(Math.random()*(max-min+1)+min);
+
+上午的练习：风骚的机选双色球
+      上午的最低要求：实现一个跟我一样的即可
+-----------------------------------------------------------------------------------
+2、Date：封装一个时间，提供对时间进行操作的API的对象
+   何时使用：只要计算时间，就必须用Date
+   如何使用：
+	创建：4种
+	1、创建一个日期对象，获取当前客户端时间
+	   var now=new Date();
+	2、创建一个日期对象，封装自定义的时间
+	  *var birth=new Date("yyyy/MM/dd hh:mm:ss");
+	3、创建一个日期对象，封装自定义的时间
+	   var birth=new Date(yyyy,MM-1,dd,hh,mm,ss);
+	   取值范围：MM：0~11，月份需要修正
+		     dd：1~31
+		     hh：0~23
+		     mm,ss：0~59
+	4、复制一个日期对象
+	     为什么：日期对象的API都是直接修改原日期对象
+		     无法获得修改前的日期
+	     何时复制：只要希望获得起始时间和截止时间同时保存时
+		       都要先复制一个副本，然后再对副本进行操作
+	     var endDate=new Date(startDate);
+
+    计算：
+	1、两个日期对象之间可以相减，结果是毫秒差，可以转换出你想要的任何分量
+	   日期对象的本质其实是保存的毫秒数，从1970年1月1日 8点开始的
+		var date1=new Date(毫秒数);
+	2、对每个分量做加减操作，三步：
+		分量：时间的单位
+	       *包含：年月日星期：FullYear Month Date Day
+		      时分秒毫秒：Hours Minutes Seconds Milliseconds
+		取值范围：FullYear - 当前的年份
+			  Month - 0~11
+			  Day：0~6
+	   每个分量，都有一对儿getXXX/setXXX
+		特殊：Day，没有set方法
+
+	   date.setXXX(date.getXXX()+|-n);
+
+    格式化：转为字符串
+	   date.toLocaleString();//本地化时间格式
+	       .toLocaleDateString();//只保留日期部分
+	       .toLocaleTimeString();//只保存实践部分
+	问题：浏览器兼容性，输出格式不一样的
+	解决：自定义格式化方法，最适合中国人的时间
+
+作业：
+  1、PPT18页 1、3题
+  2、风骚的双色球
+  3、QQ注册||最低要求，就是最low的。

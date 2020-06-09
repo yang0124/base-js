@@ -1,0 +1,60 @@
+强调：凡是从网页上读取到的内容，类型都是字符串
+1、元素的内容
+  *elem.innerHTML：获取或设置元素开始标签到结束标签之间的HTML代码内容，没有兼容性问题
+	何时使用：只要获得元素的完整的HTML原文时
+		  只要批量设置元素内容时候，都要用innerHTML
+
+   elem.textContent：获取或设置元素开始标签到结束标签之间的纯文本，
+	兼容性问题：老IE：elem.innerText; -- 小三篡位成功
+
+2、元素的属性（HTML属性）
+  *1、读取属性值：
+	核心DOM：
+		//如果不加.value，那么得到的是一个属性节点
+		1、elem.attributes[i].value
+		2、elem.attributes["属性名"].value
+		3、a1.getAttributeNode("属性节点").value
+	       *4、a1.getAttribute("属性名");
+
+	HTML DOM：elem.属性名; -- 只能获得标准属性
+	强调：只有HTML DOM的class必须写为className
+
+  *2、设置属性值：
+	核心DOM：
+	      *1、elem.setAttribute("属性名","属性值");
+	       2、elem.setAttributeNode(attrNode);//注意属性节点需要自己创建并且赋值
+
+	HTML DOM：elem.属性名="新值"; -- 只能设置标准属性
+
+   3、删除属性：
+       *核心DOM：elem.removeAttribute("属性名");
+
+	HTML DOM：elem.属性名=""; -- 变相的删除，但是不推荐
+
+   4、判断有没有：只能判断有没有，并不能判断到底是什么！
+        核心DOM：elem.hasAttribute("属性名") -- 返回bool
+
+	HTML DOM：elem.属性名!=""
+
+3、元素的样式
+   1、内联样式：优先级最高，会覆盖其他的样式
+		仅仅修改当前元素，不会影响到其他元素
+	  获取：elem.style.css属性名;
+	  设置：elem.style.css属性名="css属性值";
+	  特殊：css属性名有横线的地方都要去掉，并且变为驼峰命名
+	  比如：background-color		backgroundColor
+		box-shadow		boxShadow
+
+   2、内部/外部样式表：
+	  //1、先获得样式表对象
+		var sheet=document.styleSheets[i];
+	  //2、获取样式表中所有的样式规则
+		var rules=sheet.cssRules;
+	  //3、从所有规则中数出你想要修改的样式规则
+		var rule=rules[i];
+	  //4、获取或设置规则中的属性值
+		console.log(rule.style.background);
+		rule.style.background="purple";
+
+作业：1、尝试所有新的东西
+      2、*2_1.html 2_2.html 3_1.html *4_1.html

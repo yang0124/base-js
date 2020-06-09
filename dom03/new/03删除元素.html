@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul>
+			<li>青椒肉丝</li>
+			<li>土豆肉丝</li>
+			<li>鱼香肉丝</li>
+			<li>榨菜肉丝</li>
+			<li>咸菜肉丝</li>
+		</ul>
+		<ul>
+			<li>飘儿白</li>
+			<li>番茄炒蛋</li>
+			<li>蛋炒番茄</li>
+			<li>西红柿炒番茄</li>
+		</ul>
+		
+		<script type="text/javascript">
+			var ul=document.querySelector("ul:nth-of-type(2)");
+			var li=document.querySelector("ul:nth-of-type(2)>li:nth-of-type(2)");
+			ul.removeChild(li);
+		</script>
+	</body>
+</html>

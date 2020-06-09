@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function phone(tel){
+				console.log(this.name+"正在拨打"+tel);
+			}
+			
+			var ycx={"name":"杨成秀"};
+			var ly={"name":"刘洋"};
+			
+			phone.apply(ycx,["110"]);
+			phone.call(ly,"119");
+			
+			var ly_phone=phone.bind(ly,"119");
+			
+			ly_phone();
+			ly_phone.apply(ycx);
+		</script>
+	</body>
+</html>

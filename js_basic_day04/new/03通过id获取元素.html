@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button>变色</button>
+		<ul>
+			<li id="rs">木耳肉丝</li>
+			<li id="rs">泡脚肉丝</li>
+			<li id="rs">青椒肉丝</li>
+			<li id="rs">榨菜肉丝</li>
+		</ul>
+		<ul>
+			<li id="rs">木耳鸡</li>
+			<li id="rs">泡脚鸡</li>
+			<li id="rs">青椒鸡</li>
+			<li id="rs">榨菜鸡</li>
+		</ul>
+		
+		<script type="text/javascript">
+			//通过id
+//			var li=document.getElementById("rs");
+//			console.log(li);
+//			li.style.background="red";
+
+			//通过标签名
+//			var lis=document.getElementsByTagName("li");
+//			console.log(lis);
+//			var ul=document.getElementsByTagName("ul")[0];
+//			var lis=ul.getElementsByTagName("li");
+//			console.log(lis);
+
+			var btn=document.getElementsByTagName("button")[0];
+			btn.onclick=function(){
+				var lis=document.getElementsByTagName("li");
+				for(var i=0;i<lis.length;i++){
+					lis[i].style.background="red";
+				}
+			}
+			
+		</script>
+		<a href=""></a>
+	</body>
+</html>

@@ -1,0 +1,93 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>表单提交验证</title>
+<meta charset="utf-8" />
+<style>
+	/*失去焦点时，如果用户未填写，则恢复为hintText*/
+	.hintText{color: #aaaaaa; font-style: italic; }
+	/*获得焦点时; 如果验证通过，则保持*/
+	.normalText { color: #000000;}
+</style>
+<script>
+	function nameFocus(txt){
+		//如果txt的内容是"请输入您的姓名"
+		if(txt.value=="请输入您的姓名"){
+			txt.value="";//清除txt的内容
+			//设置txt的class为normalText
+			txt.className="normalText";
+		}
+	}
+	function contentFocus(txt){
+		//如果txt的内容是"请输入留言内容"
+		if(txt.value=="请输入留言内容"){
+			txt.value="";//清除txt的内容
+			//设置txt的class为normalText
+			txt.className="normalText";
+		}
+	}
+	function valiName(txt){
+		//验证txt的内容是否是空字符或"请输入您的姓名"，将结果保存在r中
+		var r=/^(\s*|请输入您的姓名)$/.test(txt.value);
+		if(r){//如果r为true
+			//将txt的内容恢复为"请输入您的姓名"
+			txt.value="请输入您的姓名";
+			//将txt的class设置为hintText
+			txt.className="hintText";
+		}
+		return !r;
+	}
+	function valiContent(txt){
+		//验证txt的内容是否是空字符或"请输入留言内容"，将结果保存在r中
+		var r=/^(\s*|请输入留言内容)$/.test(txt.value);
+		if(r){//如果r为true
+			//将txt的内容恢复为"请输入留言内容"
+			txt.value="请输入留言内容";
+			//将txt的class设置为hintText
+			txt.className="hintText";
+		}
+		return !r;
+	}
+	function myClick(chb){
+		//获得提交按钮
+		var btn=document.forms["msgForm"].lastElementChild;
+		btn.disabled=!chb.checked;
+		// chb checked false  btn disabled true
+		// chb checked true   btn disabled false
+	}
+	function mysubmit(){
+		var form=document.forms["msgForm"];
+		if(valiName(form.userName)){
+			form.userName.focus();
+		}else if(!valiContent(form.content)){
+			form.content.focus();
+		}else{
+			form.submit();
+		}
+	}
+</script>
+
+</head>
+<body>
+	<h2>发表留言</h2>
+	<form id="form1" name="msgForm">
+		姓名：<input id="txt1" name="userName" class="hintText" 
+					value="请输入您的姓名"
+					onfocus="nameFocus(this)"
+					onblur="valiName(this)"/>
+			  <span style="display:none;">姓名不能为空</span><br />
+					
+		内容：<textarea name="content" class="hintText" 
+						rows="5" cols="30"
+						style="resize:none"
+						onfocus="contentFocus(this)"
+						onblur="valiContent(this)">请输入留言内容</textarea>
+			  <br />
+		<label>
+			<input type="checkbox" onclick="myClick(this)"/>我已阅读了《常见问题列表》
+		</label><br/>
+		<input type="button" disabled="disabled" value="提交"
+			onclick="mysubmit()"/>
+	</form>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var wsc={
+				"name":"王思聪",
+				"phone":"iphone11",
+				"dog":"阿拉斯加",
+				"gf":"一堆",
+			}
+			var wjl={
+				"name":"王健林",
+				"money":10000000000000,
+			}
+			var dy={
+				"name":"代越",
+				"js":100
+			}
+			wsc.__proto__=wjl;
+			wjl.__proto__=dy;
+			console.log(wsc.js);
+			console.log(wjl);
+			console.log(dy);
+			
+			console.log(dy.isPrototypeOf(wsc));
+		</script>
+	</body>
+</html>

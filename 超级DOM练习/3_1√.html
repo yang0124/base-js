@@ -1,0 +1,47 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>修改元素的属性</title>
+<meta charset="utf-8" />
+</head>
+<body>
+	<!--1. 使用自定义属性实现摇号排名-->
+	<ul id="queue">
+		<li>Eric</li>
+		<li>Scott</li>
+		<li>Jerry</li>
+		<li>Tom</li>
+		<li>Rose</li>
+		<li>John</li>
+		<li>Smith</li>
+		<li>Andy</li>
+	</ul>
+	<script type="text/javascript">
+		var lis=document.getElementsByTagName("li");
+		
+		var nums=[];
+		while(nums.length<8){
+			console.log(1);
+			var r=parseInt(Math.random()*(8-1+1)+1);
+			if(nums.indexOf(r)==-1){
+				nums.push(r);	
+			}
+		}
+		
+		for(var i=0;i<lis.length;i++){
+			lis[i].setAttribute("sg",nums[i]);
+		}
+		
+		//排序只有数组能做，现在是一个类数组对象
+		//***类数组转为普通数组！！！
+		lis=Array.prototype.slice.apply(lis)
+		lis.sort((a,b)=>{
+			return a.getAttribute("sg")-b.getAttribute("sg");
+		})
+		
+		for(var i=0;i<lis.length;i++){
+			queue.appendChild(lis[i]);
+		}
+	</script>
+</body>
+</html>

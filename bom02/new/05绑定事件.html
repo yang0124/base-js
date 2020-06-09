@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<!--<div onclick="f1()">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae aut tempora quia ipsum ad quas sapiente quod quis expedita veniam quam vero nostrum dignissimos eligendi in consequatur molestiae eum mollitia.</div>-->
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<div>1</div>
+		<script type="text/javascript">
+//			function f1(){
+//				console.log(1);
+//				console.log(1);
+//				console.log(1);
+//				console.log(1);
+//			}
+
+			var divs=document.querySelectorAll("div");
+			for(var i=0;i<divs.length;i++){
+				divs[i].onclick=f1;
+			}
+			
+			function f1(){
+				console.log(1);
+			}
+		</script>
+	</body>
+</html>

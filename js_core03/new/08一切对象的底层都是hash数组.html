@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var mmx=[];
+			mmx["name"]="马敏雪";
+			mmx["chs"]=93;
+			mmx["math"]=68;
+			mmx["eng"]=102;
+//			console.log(mmx["name"]);
+//			console.log(mmx["chs"]);
+//			
+//			var obj={
+//				"name":"廖云峰",
+//				"chs":90,
+//				"math":90,
+//				"eng":90
+//			}
+//			console.log(obj["money"]);
+			var str="";
+			for(var i in mmx){
+				if(i=="name"){
+					str+="我的名字叫"+mmx[i]+"，";
+				}else if(i=="chs"){
+					str+="我的语文成绩"+mmx[i]+"，";
+				}else if(i=="math"){
+					str+="我的数学成绩"+mmx[i]+"，";
+				}else if(i=="eng"){
+					str+="我的英语成绩"+mmx[i]+"。";
+				}
+				
+			}
+			console.log(str);
+		</script>
+	</body>
+</html>

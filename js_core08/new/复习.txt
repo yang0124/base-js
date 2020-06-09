@@ -1,0 +1,52 @@
+1、闭包
+   全局变量：随处可用，容易被污染
+   局部变量：不会被污染，但是只能使用一次
+   保护一个可以反复使用的局部变量的一种词法结构
+
+	function outer(){
+		var 受保护的变量=值;
+		return function(){
+			操作受保护的变量;
+			return xx;
+		}
+	}
+	var in=outer();
+	in();
+
+   外层函数调用了几次，闭包就创建了几次，受保护的变量就有几个副本
+   同一次外层函数调用，其实操作的都是同一个受保护的变量
+
+
+2、面向对象：封装 继承 多态
+
+   封装：创建！将页面上的一个特效封装成了一个js中的对象，特效的内容就成了我们对象的属	 性，特效的功能就成对象的方法
+
+   3种：
+	1、直接量：var obj={
+			"属性名":属性值,
+			"方法名":function(){}
+		   }
+	
+	2、new构造函数：var obj=new Object();
+			obj.属性名=值;
+
+	3、自定义构造函数：一口气可以创建多个对象
+		1、创建构造函数
+		   function human(name,height,weight){
+			this.name=name;
+			this.height=height;
+			this.weight=weight;
+		   }
+		2、反复使用构造函数创建对象
+		   var yhc=new human();
+
+        获得对象中所有的内容：for in遍历
+	for(var i in obj){
+		obj[i]//5
+	}
+
+this的指向：
+1、绑定事件：this->触发操作的元素
+2、函数中：this->谁调用就是谁
+3、如果对象的函数中出现了this，this指对象
+4、构造函数创建对象：this其实指当前正在创建的对象

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function calc(base,bonus1,bonus2){
+				console.log(this);
+				return this.name+"的工资为："+(base+bonus1+bonus2);
+			}
+			
+			var mmx={"name":"马敏雪"};
+			var mmx_calc=calc.bind(mmx,10000);
+			
+		
+			
+			
+			var ls={"name":"skyshow"};
+			console.log(mmx_calc.apply(ls,[5000,6000,7000]))
+		</script>
+	</body>
+</html>

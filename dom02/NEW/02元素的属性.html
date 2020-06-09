@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a id="a1" href="#" class="a2" title="a3" dy="a4">xxxx</a>
+		
+		<script type="text/javascript">
+			//核心DOM
+			//获取
+//			console.log(a1.attributes[4].value);
+//			console.log(a1.attributes["dy"].value);
+//			console.log(a1.getAttributeNode("dy").value);
+			console.log(a1.getAttribute("dy"));
+
+			//HTML DOM
+			console.log(a1.id);
+			console.log(a1.className);
+			console.log(a1.title);
+			console.log(a1.href);
+			console.log(a1.dy);
+
+			//设置
+			//核心DOM
+//			a1.setAttribute("class","b2");
+//			a1.setAttribute("dy","b4");
+//			var x=document.createAttribute("name");
+//			x.value="a5";
+//			a1.setAttributeNode(x);
+
+			//HTML DOM
+//			a1.className="c1";
+//			a1.name="a5";
+//			a1.dy="天秀";
+
+			//移除
+			//核心DOM
+//			a1.removeAttribute("class");
+//			a1.removeAttribute("title");
+//			a1.removeAttribute("href");
+//			a1.removeAttribute("dy");
+
+//			a1.className="";
+//			a1.href="";
+//			a1.dy="";
+
+			//判断有没有
+//			console.log(a1.hasAttribute("id"));
+//			console.log(a1.hasAttribute("name"));
+//			console.log(a1.hasAttribute("class"));
+			
+		</script>
+	</body>
+</html>

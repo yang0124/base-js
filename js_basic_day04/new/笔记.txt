@@ -1,0 +1,113 @@
+1、DHTML：Dynamic：动态的网页
+          不是新语言、标准或者规则，就是将现有技术进行了技术整合，让网页在离线后，仍然	  	  能够实现页面的变化。
+	  DHTML：HTML+CSS+JS;
+
+   鄙视题：HTML/XHTML/DHTML/XML?
+	HTML：超文本标记语言，说白了就是网页
+	XHTML：更加严格的网页
+	XML：可扩展标记语言，所有的标签是自定义，数据格式
+
+2、DOM：
+   W3C DOM：标准分为了3部分
+   1、*核心DOM
+      针对任何结构化文档的标准模型（可以操作XML和HTML）
+      而且不管操作哪种文档，方法都是一样的（方法相较复杂）
+
+   2、XML DOM
+      针对XML文档提供了操作，不能操作HTML
+
+   3、*HTML DOM
+      针对HTML文档提供了操作，不能操作XML（方法相较简单）
+   工作中：优先用HTML DOM，HTML DOM做不了的采用核心DOM
+
+3、DOM树：
+   DOM 将 HTML 文档看做了是一个倒挂的树状结构
+   重要概念：其实树根是 document 对象（属性和方法）
+	     document不需要创建，每个页面都会有一个，而且只有一个
+	     js解释器会帮助我们创建
+   功能：可以帮助我们去找到你想要的任何元素，操作元素
+  
+4、获取元素
+   1、通过 id 选取元素
+      语法：var elem=document.getElementById("id值");
+      在当前DOM树中，根据元素id，获取具体元素
+      返回：找到了：DOM对象 或 DOM元素 或 DOM节点
+            没找到：null
+
+   2、*通过 标签名 选取元素
+      语法：var elems=document/node.getElementsByTagName("标签名");
+      node：代表你已经找到的某个元素
+      在当前DOM树中，根据标签名，获取数组
+      返回：找到了：DOM集合（类数组），哪怕只有一个元素也是一个类数组集合
+		    不能直接做操作，必须使用下标选中某个元素才可以操作
+		    如何才能将DOM集合变为DOM节点：DOM集合[下标]
+	    没找到：空集合
+
+   3、*通过 class 选取元素
+      语法：var elems=document/node.getElementsByClassName("class值");
+      用法：等于标签名的用法
+
+   4、*通过节点之间的关系查找，前提必须先找到一个元素，才能使用关系
+	父亲：elem.parentNode; 返回：DOM元素
+	儿子：elem.children;   返回：DOM集合，不能直接操作
+	前一个兄弟：elem.previousElementSibling   返回：DOM元素
+	后一个兄弟：elem.nextElementSibling	  返回：DOM元素
+
+-----------------------------------------------------------------------------------
+注意：以下都是在操作元素，想要操作，就必须先要找到
+
+5、读取和修改元素
+   1、元素的内容
+	1、*HTML 内容（能够识别标签）
+	   属性：innerHTML
+	   使用方式：获取：elem.innerHTML;
+		     设置：elem.innerHTML="新值";
+	
+	2、文本 内容（不能识别标签）
+	   属性：innerText;
+	   使用方式：获取：elem.innerText;
+		     设置：elem.innerText="新值";
+
+   2、元素的属性（HTML属性）
+      核心DOM：
+	1、获取属性值：elem.getAttribute("属性名");
+	2、设置属性值：elem.setAttribute("属性名","属性值");
+	万能的，什么都可以操作
+
+      HTML DOM：
+	1、获取属性值：elem.属性名;
+	2、设置属性值：elem.属性名="属性值";
+
+	做不到：
+	  1、class不能只写，必须写为className
+	  2、自定义属性无法操作
+
+   3、元素的样式（css属性）：
+      1、css 定义方式：
+	 1、内联样式
+	 2、内部样式表
+	 3、外部样式表
+	
+      2、JS操作就是要操作内联样式（行内样式）
+	 为什么：1、内联样式优先级最高
+		 2、内联样式只会修改当前元素
+
+      3、如何操作
+	 获取：elem.style.css属性名
+	 设置：elem.style.css属性名="css属性值";
+	 注意：
+		1、css属性名在此处写法不一样
+		   所有css有横线的地方去掉横线，变为驼峰命名
+		   css：			js：
+		   width		width
+		   background-color	backgroundColor
+		   border-bottom-color  borderBottomColor
+		2、不管是获取还是设置，我们都只是操作内联样式
+
+作业：
+  1、*实现开关门效果
+  2、*实现表格隔行变色
+  3、实现客户端计算（购物车），能做多少做多少
+  4、导航条的点击后效果切换，能做多少做多少
+  
+  5、计算器

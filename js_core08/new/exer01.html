@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul{
+				overflow: hidden;
+			}
+			li{
+				float: left;
+				width: 100px;
+				line-height: 50px;
+				background: #333;
+				color: red;
+				text-align: center;
+				cursor: pointer;
+			}
+			li.active{
+				background: pink;
+			}
+			#one div,#tow div,#three div{
+				width: 350px;
+				background: pink;
+				text-align: justify;
+				color: red;
+				display: none;
+			}
+			#one div.active,#tow div.active,#three div.active{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="one">
+			<ul>
+				<li dy="0" class="active">十元套餐</li>
+				<li dy="1">二十元套餐</li>
+				<li dy="2">三十元套餐</li>
+			</ul>
+			<div class="active">十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>二十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>三十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+
+		</div>
+		
+		<br />
+		<br />
+		<br />
+		<br />
+		
+		<div id="tow">
+			<ul>
+				<li dy="0" class="active">十元套餐</li>
+				<li dy="1">二十元套餐</li>
+				<li dy="2">三十元套餐</li>
+			</ul>
+			<div class="active">十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>二十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>三十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+		</div>
+		<br />
+		<br />
+		<br />
+		<br />
+		<div id="three">
+			<ul>
+				<li dy="0" class="active">十元套餐</li>
+				<li dy="1">二十元套餐</li>
+				<li dy="2">三十元套餐</li>
+			</ul>
+			<div class="active">十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>二十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+			<div>三十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+		</div>
+		
+		<script type="text/javascript">
+			//创建对象的构造函数
+			function xxk(divs,lis){
+				this.divs=divs;
+				this.lis=lis;
+			}
+			//原型上创建了bind方法
+			xxk.prototype.bind=function(x){
+				for(var i=0;i<this.lis.length;i++){
+					this.lis[i].onclick=function(){
+						x.toggle(this);
+					}
+				}
+			}
+			xxk.prototype.toggle=function(li){
+				for(var i=0;i<this.divs.length;i++){
+					this.divs[i].className="";
+					this.lis[i].className="";
+				}
+				li.className="active";
+				var i=li.getAttribute("dy");
+				this.divs[i].className="active";
+			}
+			
+			
+			
+			//先找到的div和li
+			var divs=one.getElementsByTagName("div");
+			var lis=one.getElementsByTagName("li");
+			//调用构造函数传入实参，创建出了对象
+			var xxk1=new xxk(divs,lis);
+			//调用了对象的bind绑定事件
+			xxk1.bind(xxk1);
+			
+			var divs=tow.getElementsByTagName("div");
+			var lis=tow.getElementsByTagName("li");
+			var xxk2=new xxk(divs,lis);
+			xxk2.bind(xxk2);
+			
+			var divs=three.getElementsByTagName("div");
+			var lis=three.getElementsByTagName("li");
+			var xxk3=new xxk(divs,lis);
+			xxk3.bind(xxk3);
+		</script>
+	</body>
+</html>

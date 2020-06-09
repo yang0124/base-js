@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			function zwjs(){
+//				if(arguments.length==1){
+//					console.log("我的名字叫"+arguments[0]);
+//				}else if(arguments.length==2){
+//					console.log("我是"+arguments[0]+"今年"+arguments[1]+"岁");
+//				}else if(arguments.length==3){
+//					console.log(arguments[0]+"今年"+arguments[1]+"岁，爱好"+arguments[2]);
+//				}else{
+//					console.log("想吃屁");
+//				}
+//			}
+//			zwjs("代越");
+//			zwjs("代越",108);
+//			zwjs("代越",108,"女");
+//			zwjs();
+
+
+//			function add(){
+//				for(var i=0,sum=0;i<arguments.length;i++){
+//					sum+=arguments[i];
+//				}
+//				return sum;
+//			}
+//			
+//			console.log(add(1,2))
+//			console.log(add(1,2,3))
+//			console.log(add(1,2,3,4,5,6,7))
+
+			function calc(){
+				//相同的函数，根据传入的参数不同，执行的是不同的操作
+				if(arguments.length==1){
+					return Math.pow(arguments[0],2);
+				}else if(arguments.length==2){
+					return arguments[0]+arguments[1];
+				}
+			}
+			
+			console.log(calc(6));
+			console.log(calc(6,6));
+			
+			
+			
+		</script>
+	</body>
+</html>

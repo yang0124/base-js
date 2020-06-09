@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			function f1(){
+				//try...catch是一个整体，要么都不做，要么必须全做完
+				try{
+					var n=0;
+					n++;//1
+					console.log(m);
+					return n;
+				}catch{
+					n++;//2
+					return n;//2
+				}finally{
+					n++;//3
+					console.log(n);//3
+					return n;//3
+				}
+			}
+			
+			var x=f1();
+			console.log(x);//
+		</script>
+	</body>
+</html>

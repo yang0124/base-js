@@ -1,0 +1,49 @@
+ES5：
+1、保护对象：
+   对象的每个属性都有4大特性
+     修改：Object.defineProperties(obj,{
+		"属性名":{四大特性//value,writable,enumerable,configurable}
+	   })
+
+   三个级别：
+	防扩展：Object.preventExtensions(obj)
+	密封：Object.seal(obj)
+	冻结：Object.freeze(obj);
+
+2、数组的API：其实底层原理都是for循环来做的
+   1、判断：
+	var bool=arr.every((val,i,arr)=>判断条件) 
+	var bool=arr.some((val,i,arr)=>判断条件)
+
+   2、遍历：
+	arr.forEach((val,i,arr)=>arr[i]=val*2);
+	var newArr=arr.map((val,i,arr)=>val*2);
+
+   3、过滤和汇总：
+	var subArr=arr.filter((val,i,arr)=>判断条件);
+	var sum=arr.reduce((prev,val,i,arr)=>prev+val,base)
+
+3、var child=Object.create(father,{
+	"自有属性":{四大特性}
+   })：只有父元素也想创建子元素的时候
+
+4、****call(obj,参数1,参数2)/apply(obj,[参数1,参数2])：借用，临时替换函数中的this
+
+   bind：买，永久的替换了函数中的this
+
+5、严格模式："use strict";
+
+-----------------------------------------------------------------------------------
+
+ES6：
+1、模板字符串：`${name}`
+2、块级作用域：let 变量名=变量值;
+3、箭头函数：
+	去掉function，()和{}之间添加=>
+	如果形参只有一个，()省略
+	如果形参不止一个或者没有，()不可省略
+	如果函数体只有一句话，可以省略{}
+	          并且是return，return也可以省略
+4、for(var v of arr){
+	
+   }

@@ -1,0 +1,39 @@
+1、面向对象：封装 继承 多态
+   目的：代码重用，节约内存空间
+
+   javascript基于原型的面向对象语言
+
+   获得原型：
+	1、构造函数.prototype
+	2、对象.__proto__
+   目的：可以设置一些共有属性和共有方法，切记注意必须在原型对象上操作
+	共有属性：构造函数.prototype.共有属性名=共有属性值
+	共有方法：构造函数.prototype.共有方法名=function(){}
+
+   判断共有还是自有：
+	1、自有：obj.hasOwnProperty("属性名");
+	2、共有：if(obj.hasOwnProperty("属性名")==false && "属性名" in obj){
+			//共有
+		 }
+
+   可以给一类人设置方法：
+	Array.prototype.方法名=function(){}
+	String.prototype.方法名=function(){}
+
+   如何判断一个对象是不是数组
+	1、Array.isArray()
+	2、arr instanceof Array
+	3、Array.prototype.isPrototypeOf(arr);
+	4、Object.prototype.toString.apply(arr)=="[object Array]"
+
+   如何设置自定义继承：
+	1、两个对象之间设置：子对象.__proto__=父对象
+	2、如果想要设置多个子对象的继承：构造函数.prototype=父对象
+	   注意：时机，先设置继承，再创建对象
+
+多态（重写）：子对象觉得父对象的方法或属性不好用，可以在自己本地定义同名的东西，覆盖父	      	      对象的东西
+	      同一个函数名，但是执行的效果不一样，比如toString
+
+
+
+

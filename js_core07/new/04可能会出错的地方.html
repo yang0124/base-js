@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1">111</div>
+		<script type="text/javascript">
+			//try...catch版本
+//			try{
+//				var xhr=new ActiveXObject("Microsoft.XMLhttp");
+//				console.log(xhr);
+//			}catch(err){
+//				console.log(err);
+//			}
+	
+//			console.log(XMLHttpRequest);
+	
+//			if(XMLHttpRequest!==undefined){
+//				var xhr=new ActiveXObject("Microsoft.XMLhttp");
+//			}else{
+//				console.log("不支持此方法");
+//			}
+			
+			d1.onclick=function(e){
+//				try{
+//					var target=e.target;
+//					console.log(target);
+//				}catch(err){
+//					console.log(err);
+//				}
+
+				if(e){
+					var target=e.target;
+					console.log(target);
+				}else{
+					console.log("你是老IE")
+				}
+				
+				
+				console.log("后续操作");
+			}
+			
+
+		</script>
+	</body>
+</html>

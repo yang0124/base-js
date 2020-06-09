@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			function add(num1,num2){
+//				var sum=num1+num2;
+//				return sum;
+//			}
+	
+//			var add=function(num1,num2){
+//				var sum=num1+num2;
+//				return sum;
+//			}
+
+//			var add=new Function("a","b","var sum=a+b;return sum;");
+//			
+//			
+//			console.log(add(2,5));
+//			console.log(add(3,6));
+//			console.log(add(true,false));
+
+
+//			function f1(){
+//				console.log(1);
+//			}
+//			
+//			console.log(f1);
+
+
+			var arr=[3,4,2,1,8,7,6,9,0];
+			
+//			function compare(a,b){return a-b}
+//			var compare=function(a,b){return a-b};
+			var compare=new Function("a","b","return a-b");
+			arr.sort(compare);
+			
+			
+			console.log(arr);
+		</script>
+	</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.carousel1,.carousel2{
+				position: relative;
+			}
+			.carousel1>img,.carousel2>img{
+				width: 100%;
+			}
+			.carousel_img1 img,.carousel_img2 img{
+				width: 100%;
+				vertical-align: top;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				transition: all 1s;
+			}
+			.carousel1 button,.carousel2 button{
+				position: absolute;
+				top: 50%;
+				width: 50px;
+				height: 50px;
+				background: rgba(0,0,0,.5);
+				border-radius: 50%;
+				border: 2px solid #000;
+				color: #fff;
+				outline: none;
+				cursor: pointer;
+				margin-top: -25px;
+				color: red;
+			}
+			.carousel1 button:hover,.carousel2 button:hover{
+				background: rgba(0,0,0,.9);
+			}
+			.carousel1 button:nth-of-type(1),.carousel2 button:nth-of-type(1){
+				left: 20px;
+			}
+			.carousel1 button:nth-of-type(2),.carousel2 button:nth-of-type(2){
+				right: 20px;
+			}
+			ul{
+				position: absolute;
+				bottom: 20px;
+				left: 50%;
+				margin-left: -20px;
+			}
+			li{
+				width: 10px;
+				height: 10px;
+				display: inline-block;
+				background: #fff;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+			img.active{
+				opacity: 1;
+			}
+			li.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="c1" class="carousel1">
+			<div class="carousel_img1">
+				<img class="active" src="img/4.jpg"/>
+				<img src="img/5.jpg"/>
+				<img src="img/6.jpg"/>
+			</div>
+			<img src="img/4.jpg"/>
+			<button><</button>
+			<button>></button>
+			<ul>
+				<li dy="0" class="active"></li>
+				<li dy="1"></li>
+				<li dy="2"></li>
+			</ul>
+		</div>
+		
+		<div id="c2" class="carousel2">
+			<div class="carousel_img2">
+				<img class="active" src="img/4.jpg"/>
+				<img src="img/5.jpg"/>
+				<img src="img/6.jpg"/>
+			</div>
+			<img src="img/4.jpg"/>
+			<button><</button>
+			<button>></button>
+			<ul>
+				<li dy="0" class="active"></li>
+				<li dy="1"></li>
+				<li dy="2"></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">//			var carousel1={
+//		
+			function carousel(btns, carousel_img, imgs, lis, j) {
+				this.btns=btns;
+				this.carousel_img=carousel_img;
+				this.imgs=imgs;
+				this.lis=lis;
+				this.j=j;
+			}
+			carousel.prototype.bind=function(x) {
+				for(var i=0;i < this.btns.length;i++) {
+					this.btns[i].onclick=function() {
+						if(this.innerHTML=="&gt;") {
+							x.animate(1)
+						}
+						else {
+							x.animate(-1)
+						}
+					}
+				}
+				for(var i=0;i < this.lis.length;i++) {
+					this.lis[i].onmouseover=function() {
+						x.j=this.getAttribute("dy");
+						x.animate(x.j);
+					}
+				}
+			}
+			carousel.prototype.animate=function(x){
+				if(x===1){
+						this.j=parseInt(this.j);
+						this.j+=x;
+						if(this.j==3){
+							this.j=0;
+						}
+					}else if(x===-1){
+						this.j=parseInt(this.j);
+						this.j+=x;
+						if(this.j==-1){
+							this.j=2;
+						}
+					}else{
+						this.j=x;
+					}
+					for(var i=0;i<this.imgs.length-1;i++){
+						this.imgs[i].className="";
+						this.lis[i].className="";
+					}
+					console.log(this.j);
+					this.imgs[this.j].className="active";
+					this.lis[this.j].className="active";
+			}
+
+
+			var btns=c1.getElementsByTagName("button");
+			var carousel_img=c1.getElementsByClassName("carousel_img1")[0];
+			var imgs=c1.getElementsByTagName("img");
+			var lis=c1.getElementsByTagName("li");
+			var carousel1=new carousel(btns, carousel_img, imgs, lis, 0);
+			carousel1.bind(carousel1);
+			
+			var btns=c2.getElementsByTagName("button");
+			var carousel_img=c2.getElementsByClassName("carousel_img1")[0];
+			var imgs=c2.getElementsByTagName("img");
+			var lis=c2.getElementsByTagName("li");
+			var carousel2=new carousel(btns, carousel_img, imgs, lis, 0);
+			carousel2.bind(carousel2);
+		</script>
+	</body>
+</html>

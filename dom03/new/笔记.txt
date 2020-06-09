@@ -1,0 +1,96 @@
+1、*添加和删除、替换元素
+   1、添加单个元素：3步
+      1、创建一个空元素
+	 语法：var elem=document.createElement("标签名");
+	 比如：var a=document.createElement("a");
+	       <a></a>
+
+      2、设置必要的属性/事件
+	 语法：elem.属性名=属性值;
+	       elem.onXXX=function(){}
+	 比如：a.href="http://www.baidu.com";
+	       a.innerHTML="百度一下";
+
+      3、将新元素，加载到指定DOM树下
+	 语法：
+	  *父元素.appendChild(新); //将新元素追加到父元素的最后一个子元素的后面
+	   父元素.insertBefore(新,已有子元素); //将新元素插在"已有子元素"之前
+	   父元素.replaceChild(新,已有子元素); //将新元素替换"已有子元素"
+
+      强调：每一次修改DOM树，都会导致DOM树重新加载，频繁修改DOM树，会降低效率
+
+   2、添加多个平级子元素（兄弟）：
+      1、创建一个文档片段：Document Fragment
+         var frag=document.createDocumentFragment();
+         文档片段：JS内存中临时存储多个DOM元素的临时父亲
+	 何时使用：只要希望创建多个平级子元素
+
+      2、将你创建好的所有元素都追加到frag
+	 frag.appendChild(新);
+
+      3、将文档片段整体追加到页面之上
+	 父.appendChild(frag);//追加上页面后，frag会自动释放
+
+   3、删除子元素：父元素.removeChild(子元素);
+
+   核心DOM结束了，你能做所有的操作
+
+-----------------------------------------------------------------------------------
+
+2、HTML DOM常用对象：image select option form
+   1、Image对象
+      创建img元素：var img=new Image(); == document.createElement("img");
+		   img.src="";
+      强调：不是所有的元素都可以用new创建！只有个别可以！
+
+   2、*****select对象
+      属性：options：获得select下所有的options组成的一个集合 == children
+		     下标访问某一个，length属性，遍历
+	   *selectedIndex：获取当前选中项的下标 -- 不需要在select自定义下标
+      方法：*add(option)：相当于将option添加到select下 == appendChild
+	    remove(i)：删除i位置的option == removeChild
+      事件：*onchange：当选中项发生改变的时候触发 -- select专属事件
+
+   3、*****option：
+      创建：var opt=new Option("innerHTML","value");
+      搭配：sel.add(new Option("innerHTML","value"));
+	4个操作：
+	   1、创建了空的option
+	   2、设置option的innerHTML
+	   3、设置option的value
+	   4、将option追加页面之上
+
+   4、form对象：
+	获取form元素：var form=document.forms[i]
+	查找表单中的元素：form.elements[i];
+	事件：onsubmit：提交的一瞬间会触发，实现验证
+        form中的元素可以获得焦点：elem.focus();
+
+扩展：
+  json字符串转为json对象：eval() || JSON.parse()
+  json对象转为json字符串：JSON.stringify()
+
+作业：
+  1、上午的作业。
+  2、*1_2.html 2_1.html 3.html。
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

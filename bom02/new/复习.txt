@@ -1,0 +1,63 @@
+打开新窗口：var 打开的窗口=window.open("url","自定义name","width=,height,top,left");
+关闭窗口：window.close();
+//注意改变窗口的大小和位置，都只能对新打开的窗口做操作
+改变窗口的大小：newWindow.resizeTo();
+改变窗口的位置：newWindow.moveTo();
+
+获取完整屏幕的尺寸：screen.width	screen.height
+浏览器完整的尺寸：outerWidth	outerHeight
+浏览器的文档显示区域的尺寸：innerWidth	innerHeight
+作用：可以让JS自动去获取用户的屏幕大小
+
+***获取鼠标的位置：2步
+   1、在事件函数中传入形参e，形参e会自动获得事件对象event
+   2、事件对象event可以获取鼠标的位置
+	相对于网页的鼠标位置：e.pageX	e.pageY
+	相对于屏幕的鼠标位置：e.screenX	e.screenY
+	相对于文档显示区的位置：e.clientX	e.client
+
+*****定时器：
+   周期性：
+	开：timer=setInterval(()=>{
+		//任务
+	    },间隔毫秒数)
+	停：clearInterval(timer);
+	    timer=null;
+
+   一次性：
+	开：timer=setTimeout(()=>{
+		//任务
+	    },间隔毫秒数)
+	停：clearTimeout(timer);
+	    timer=null;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+t

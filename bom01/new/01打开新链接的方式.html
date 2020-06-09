@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<a href="http://www.baidu.com">当前窗口打开，可后退</a>
+		<div id="d1">当前窗口打开，可后退</div>
+		<br />
+		<br />
+		<a href="http://www.baidu.com" target="_blank">新窗口打开，可打开多个</a>
+		<div id="d2">新窗口打开，可打开多个</div>
+		<br />
+		<br />
+		<a href="http://www.baidu.com" target="dy">新窗口打开，只打开一个</a>
+		<div id="d3">新窗口打开，只打开一个</div>
+		<br />
+		<br />
+		<div id="d4">替换当前页面，禁止后退</div>
+		
+		<script type="text/javascript">
+			d1.onclick=function(){
+				open("http://www.baidu.com","_self");
+			}
+			
+			d2.onclick=function(){
+				open("http://www.baidu.com","_blank");
+			}
+			
+			d3.onclick=function(){
+				open("http://www.baidu.com","sg");
+			}
+			
+			d4.onclick=function(){
+				location.replace("http://www.baidu.com")
+			}
+			
+		</script>
+	</body>
+</html>

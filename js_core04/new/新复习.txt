@@ -1,0 +1,40 @@
+1、Array API：
+   1、arr to string：var str=arr.join("自定义连接")
+
+   2、拼接数组：var newArr=arr.concat(arr1,值1...);
+
+   3、截取数组：var subArr=arr.slice(starti,endi+1);
+
+   4、删除/添加/替换：var dels=arr.splice(starti,n,值1...);
+
+   5、翻转数组：arr.reverse();
+
+   6、排序：arr.sort(); - 默认按字符串排序
+      希望数字升序排序：arr.sort(function(a,b){return a-b;})
+	      降序排序：arr.sort(function(a,b){return b-a;})
+
+   7、栈和队列：
+	var first=arr.shift();
+	arr.unshift(值1...);
+
+	var last=arr.pop();
+	arr.push(新值);  ==  arr[arr.length]=新值;
+
+-----------------------------------------------------------------------------------
+
+2、2维数组
+   var arr=[
+	[],
+	[],
+	[]
+   ];
+
+   访问：arr[r][c];
+   特殊：列下标越界，返回undefined
+	 行下标越界，报错！
+   遍历：
+	for(var r=0;r<arr.length;r++){
+		for(var c=0;c<arr[r].length;c++){
+			
+		}
+	}

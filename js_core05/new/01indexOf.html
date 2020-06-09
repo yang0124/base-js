@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[];
+			//双色球 1~33
+			while(arr.length<5){
+				var r=parseInt(Math.random()*(33-1+1)+1);
+				if(arr.indexOf(r)==-1){
+					arr.push(r);	
+				}
+			}
+			console.log(arr);
+		</script>
+	</body>
+</html>

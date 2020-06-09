@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			ul{
+				overflow: hidden;
+			}
+			li{
+				float: left;
+				width: 100px;
+				line-height: 50px;
+				background: #333;
+				color: red;
+				text-align: center;
+				cursor: pointer;
+			}
+			li.active{
+				background: pink;
+			}
+			div{
+				width: 350px;
+				background: pink;
+				text-align: justify;
+				color: red;
+				display: none;
+			}
+			div.active{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li dy="0" class="active">十元套餐</li>
+			<li dy="1">二十元套餐</li>
+			<li dy="2">三十元套餐</li>
+		</ul>
+		<div class="active">十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+		<div>二十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+		<div>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit eveniet saepe beatae illum tenetur provident repellat accusamus similique officiis nulla unde officia optio rem expedita voluptatum consequuntur dolorem eius voluptates.三十元套餐Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perspiciatis mollitia inventore accusantium voluptas cupiditate quidem optio qui placeat consequatur quasi! Voluptatum in voluptate nostrum necessitatibus delectus facere dolorum sed hic.</div>
+
+		<script type="text/javascript">
+			
+//			var lis=document.getElementsByTagName("li");
+//			var divs=document.getElementsByTagName("div");
+//			for(var i=0;i<lis.length;i++){
+//				lis[i].onclick=function(){
+//					for(var i=0;i<lis.length;i++){
+//						lis[i].className="";
+//						divs[i].className="";
+//					}
+//					this.className="active";
+//					
+//					var i=(this.getAttribute("dy"));
+//					divs[i].className="active";
+//				}
+//			}
+			
+			
+			var xxk={
+				"lis":document.getElementsByTagName("li"),
+				"divs":document.getElementsByTagName("div"),
+				"init":function(){
+					this.bind();
+				},
+				"bind":function(){
+					for(var i=0;i<this.lis.length;i++){
+						this.lis[i].onclick=function(){
+							xxk.toggle(this);
+						}
+					}
+				},
+				"toggle":function(btn){
+					var i=btn.getAttribute("dy");
+					for(var j=0;j<this.lis.length;j++){
+						this.lis[j].className="";
+						this.divs[j].className="";
+					}
+					btn.className="active";
+					this.divs[i].className="active";
+				}
+			}
+			
+			
+			window.onload=function(){
+				xxk.init();
+			}
+		</script>
+	</body>
+</html>

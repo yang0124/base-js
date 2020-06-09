@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<span id="span">5秒后自动关闭页面</span>
+		<a href="javascript:clearTimeout(timer)">留在本页</a>
+		
+		<script type="text/javascript">
+			timer=setInterval(()=>{
+				var s=parseInt(span.innerHTML);
+				s--;
+				span.innerHTML=s+"秒后自动关闭页面";
+				if(s==0){
+					window.close();
+				}
+			},1000);
+			
+			
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var i=100;
+//			while(i<=10){
+//				console.log("hello world");
+//				i++;
+//			}
+
+
+//			var i=100;
+//			do{
+//				console.log("hello world");
+//				i++;
+//			}while(i<=10)
+
+
+			var r=parseInt(Math.random()*(100-1+1)+1);
+			
+			do{
+				var user=parseInt(prompt("请输入一个数字"));
+				if(user>r){
+					alert("大");
+				}else if(user<r){
+					alert("小");
+				}else{
+					alert("对");
+					break;
+				}
+			}while(true)
+			
+			
+		</script>
+	</body>
+</html>

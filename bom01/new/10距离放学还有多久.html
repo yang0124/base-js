@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<h1>距离放学还有：<span id="time"></span></h1>
+		<button id="btn">|></button>
+		
+		<script type="text/javascript">
+			function djs(){
+				var now=new Date();
+				var end=new Date("2019/10/31 21:00:00");
+				
+				var sc=parseInt((end-now)/1000);
+				var h=parseInt(sc/3600);
+				if(h<10){h="0"+h};
+				var m=parseInt(sc%3600/60);
+				if(m<10){m="0"+m};
+				var s=parseInt(sc%60);
+				if(s<10){s="0"+s};
+							   //判断内容中有没有：                                  
+				time.innerHTML=time.innerHTML.indexOf(":")==-1?`${h}:${m}:${s}`:`${h} ${m} ${s}`;
+			}
+			djs();
+			timer=setInterval(()=>{
+				djs();
+			},500);
+			
+			btn.onclick=function(){
+					
+				if(this.innerHTML=="||"){
+					timer=setInterval(()=>{
+						djs();
+					},500);
+					this.innerHTML="|>";
+				}else{
+					clearInterval(timer);
+					timer=null;
+					this.innerHTML="||";
+					time.innerHTML=time.innerHTML.replace(/\s/g,":");
+				}
+			}
+		</script>
+	</body>
+</html>

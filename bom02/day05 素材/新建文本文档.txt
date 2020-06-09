@@ -1,0 +1,130 @@
+BOM常用对象：history location navigator
+2、*****event
+
+
+1、BOM常用对象：
+   history：保存当前窗口打开过的URL的历史记录
+	操作：前进：history.go(1)
+	      后退：history.go(-1)
+	      刷新：history.go(0)
+   location：封装当前窗口正在打开的url的对象
+	属性：location可获得url中各个部分
+	protocol；协议
+	host：主机号/域名
+	port：端口号
+	pathname：相对路径名，从域名后的/到？前
+	search：查询字符串，？后的内容
+   操作
+	跳转：location="url"
+	      location.href="url"
+	      location.assign("url")
+	跳转：禁止后退：location.replace("url")
+	刷新：location.reload（force）
+	其中如果force为false（默认），首先检查缓存中的网页和硬盘上网页的更新时间是否一直，如果一致从缓存中访问，否则从硬盘重新获取新网页。如果force为trrue，强制每次都绕过缓存，直接从硬盘获取
+
+   ***navigator：封装浏览器配置信息的对象
+	cookieEnabled：识别浏览器是否启用了cookie（缓存）
+	  如果启用，返回true，否则返回false
+	useragent：描述浏览器名称和版本号的字符串
+	plugins：保存了浏览器安装的所有插件的信息
+	  何时使用：专门用于判断浏览器是否安装了指定插件
+	  plugins中每个插件的name属性标识了插件名
+
+
+1、*****event：
+   事件：用户手动触发的，或浏览器自动触发的状态的改变
+   事件对象：在事件发生时，自动创建，专门封装时间信息的对象
+   事件处理函数：在事件发生时，自动调用执行的函数
+	如何调用：elem.on事件名()
+   如何定义事件处理函数：3种
+   1、在HTML中定义事件处理函数的内容
+	<elem onXXX="js语句">
+	比如：<button onclick="alert(this)"><button>
+	定义时：相当于：
+	  elem.onXXX=function(){
+		alert(1)
+	  }
+	运行时：
+	  elem.onXXX()    //element(元素)
+	  this:elem
+
+	缺点：1、不符合内容与行为分离的原则
+	      2、无法动态绑定
+	      3、无法同时绑定多个函数对象
+
+   2、在JS中使用元素的事件处理函数属性：
+	elem.onXXX=function(){}
+	调用时：elem.onXXX()     this：elem
+
+	优点：1、符合内容与行为分离的原则
+	      2、动态绑定，便于维护
+	缺点：无法同时绑定多个函数对象
+
+   3、使用专门的API绑定事件处理函数
+      DOM：elem.addEventListener("事件名"，函数对象)	  //不写on
+	全是优点
+      IE8：elem.attachEvent("on事件名"，函数对象)   //要写on
+
+
+   时间周期：从事件发生，到所有事件处理函数执行完毕的全过程
+      DOM：3个阶段
+	1、由外向内 捕获阶段
+	   捕获：记录所有要执行的事件处理函数
+	2、目标触发：优先触发目标元素上的事件处理函数
+	   目标元素：实际发生事件的元素
+	3、由内向外 冒泡执行
+      IE8:2个阶段：没有捕获！
+
+   改变事件触发的顺序：
+	设置事件处理函数在捕获阶段就提前执行
+	如何设置：addEventListener(事件名,函数名，capture)
+		capture为true：在捕获阶段提前执行
+		       为false：在冒泡阶段执行（默认）
+	只有DOM的addEventListener可修改触发顺序
+	IE不可以
+
+   事件对象e
+      DOM：event对象会自动坐稳事件处理函数的第一个参数传入
+	其实定义事件处理函数时：
+	elem.onXXX=function(e){
+		e->event对象
+	}
+	调用：elem.onXXX(e)
+      IE8：window全局有一个属性event，在事件发生时，保存事件对象
+	elem.onXXX=function(){
+	 	window.event
+	}
+      兼容：elem.onXXX=function(e){
+		e=window.event||e
+			IE8     DOM
+	    }
+
+   取消冒泡：本次事件处理函数执行后，阻止继续冒泡触发
+	1、如何取消
+	DOM：e.stopPropagation();
+	IE8：e.cancelBubble=true;
+	兼容：if(e.stopPropagation){
+		e.stopPropagation()
+	      }else{
+		e.cancelBubble=true;
+	      }
+
+	2、利用冒泡：
+	优化：如果多个子元素都定义了相同的事件处理函数
+	      最好旨在父元素上定义一次即可！
+	为什么：每绑定一次事件处理函数，其实都是创建一个事件监听对象，创建越多，效率越低
+
+	获取目标元素：
+	  DOM：e.target
+	  IE8：e.srcElement
+	  var target = e.target||e.srcElement;
+
+	取消事件：如果事件处理函数的执行过程中，遇到问题，不希望事件继续执行，则可以取消
+	DOM：e.preventDefault();
+	IE8：e.returnValue=false;
+
+	事件发生时，鼠标的坐标位置：详见PPT
+
+	移除事件绑定：
+	  elem.removeEventListener("事件名"，函数对象)
+	强调：remove时要求，函数对象必须和add时使用的函数对象完全一样

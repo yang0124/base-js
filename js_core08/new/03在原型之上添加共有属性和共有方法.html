@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var wsc={
+				"name":"王思聪",
+				"phone":"iphone11",
+				"dog":"阿拉斯加",
+				"gf":"一堆",
+//				"js":1,
+			}
+			
+			var wjl={
+				"name":"王健林",
+				"money":10000000000000,
+//				"js":2
+			}
+			
+			wjl.__proto__.js=100;
+			wjl.__proto__.jk=function(){
+				return this.name+"正在给大家上课";
+			};
+			
+			console.log(wsc.js);
+			console.log(wjl.js);
+//			console.log(wjl.jk());
+//			console.log(wsc.jk());
+		</script>
+	</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="add()">1+到999分之1</button>
+		<button onclick="getRN()">请用户输入年份，推算出后续5个闰年</button>
+		<button onclick="getMax()">找数组最大值</button>
+		<button onclick="getIndex()">查找数组元素位置</button>
+		<button onclick="remove()">去重</button>
+		<script type="text/javascript">
+			function add(){
+				for(var i=1,sum=0;i<=999;i+=2){//5<=999
+					sum+=1/i;
+				}
+				console.log(sum);
+			}
+			
+			function getRN(){
+				var hp=0;
+				var year=parseInt(prompt("请输入一个年份"));
+				if(!isNaN(year)){
+					while(true){
+						year++;//2004
+						if(year%4==0 && year%100!=0 || year%400==0){
+							console.log("当前是闰年："+year);
+							hp++;
+							if(hp==5){
+								break;
+							}
+						}
+					}
+				}else{
+					console.log("恶意输入");
+				}
+			}
+			
+			function getMax(){
+				var arr=[4,5,3,10,9,7,6,8,2,1];
+				var max=arr[0];
+				for(var i=0;i<arr.length;i++){
+					if(max<arr[i]){
+						max=arr[i];
+					}
+				}
+				console.log(max);
+			}
+			
+			function getIndex(){
+				var arr=["倚","天","屠","龙","记"];
+				var user=prompt("请输入一个字，已有文字："+arr);
+				var index=-1;//
+				for(var i=0;i<arr.length;i++){
+					if(user==arr[i]){
+						index=i;
+					}
+				}
+				console.log(index);
+			}
+			
+			function remove(){
+				var arr=["倚","天","屠","龙","记"];
+				var user=prompt("请输入一个字，已有文字："+arr);
+				var index=-1;
+				for(var i=0;i<arr.length;i++){
+					if(user==arr[i]){
+						index=i;					
+					}
+				}
+				if(index!=-1){//说明找到了重复的
+					//从当前找到位置开始循环数组后面的每一个
+					for(var i=index;i<arr.length;i++){
+						//将当前位置赋值为后一个元素的值
+						arr[i]=arr[i+1];
+					}
+					//长度-1，删除最后一个元素
+					arr.length--;
+					console.log(arr);
+	
+				}else{
+					console.log("没找到一样的")
+				}
+			}
+			
+		</script>
+	</body>
+</html>

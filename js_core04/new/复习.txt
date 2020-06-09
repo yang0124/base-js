@@ -1,0 +1,35 @@
+1、循环
+   while(循环条件){循环体}
+   do{循环体}while(循环条件)
+   区别在第一次，如果都满足，两者没区别
+		 如果不满足，while一次都不做，do...while至少做一次
+   for(var i=10;i>=0;i--){
+	循环体;
+   }
+
+   终止循环：break
+	     continue
+
+2、数组：
+   创建：2种
+	1、var arr=[];
+	2、var arr=new Array();
+
+   访问：数组名[下标]
+
+   属性：数组名.length;
+	 最后一个元素：arr[arr.length-1]
+	 最后添加元素：arr[arr.length]=新值;
+	 删除最后的n个元素：arr.length-=n;
+
+3、API：
+   1、获取子数组：var subArr=arr.slice(starti,endi+1);
+
+   2、拼接数组：var newArr=arr.concat(arr1,值1...);
+
+   3、数组转为字符串：var str=arr.join("自定义连接符");
+
+   4、删除、添加、替换：
+	var dels=arr.splice(starti,n,值1...);
+
+   5、翻转数组：arr.reverse();

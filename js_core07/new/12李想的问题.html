@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			div{
+				/*background: red;*/
+				display: inline-block;
+			}
+			ul{
+				opacity: 0;
+				transition: all 1s;
+				display: none;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1">
+			简体中文
+			<ul>
+				<li>繁体中文</li>
+				<li>English</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			
+				d1.onmouseover=function(){
+					f1(function(){d1.children[0].style.opacity="1"});
+				}
+				
+				function f1(f2){
+					d1.children[0].style.display="block";
+					setTimeout(function(){
+						f2();
+					},100);
+				}
+		
+				d1.onmouseout=function(){
+					f3(function(){d1.children[0].style.display="none";});
+				}
+				function f3(f4){
+					d1.children[0].style.opacity="0";
+					setTimeout(function(){
+						f4();	
+					},1000)
+
+				}
+		</script>
+	</body>
+</html>

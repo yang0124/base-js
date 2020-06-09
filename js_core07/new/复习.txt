@@ -1,0 +1,46 @@
+1、Math
+   API：
+   1、圆周率：Math.PI
+   2、取整：
+	上取整：Math.ceil(num);
+	下取整：Math.floor(num);
+	四舍五入取整：Math.round(num);
+
+	都只能取整：自定义round方法，按任意小数位数四舍五入，返回数字类型：
+		    用户一定会告诉我们数字是多少，并且他想要按几位保留
+			将数字乘以10的保留位数次方
+			再使用四舍五入取整
+			将数字除以10的保留位数次方
+			function round(num,d){
+				num*=Math.pow(10,d);
+				num=Math.round(num);
+				num/=Math.pow(10,d);
+				return num;
+			}
+
+   3、乘方和开方：
+	Math.pow(底数,幂);
+	Math.sqrt(num);
+
+   4、最大值/最小值：Math.max/min(num1,num2,num3...);
+
+      希望数组可以比较：Math.max/min.apply(Math,arr);
+
+   5、绝对值：Math.abs(num);
+___________________________________________________________________________________
+
+2、Date：
+   创建：4中
+     1、客户端当前时间
+	var date1=new Date();
+     2、自定义时间
+	var date1=new Date("yyyy/MM/dd hh:mm:ss");
+     3、复制时间
+	var end=new Date(start);
+
+     API：
+	分量：FullYear Month Date Day
+	      Hours Minutes Seconds Milliseconds
+	每一个分量都有一对儿getXXX/setXXX，Day没有set
+
+	操作：date.setXXX(date.getXXX()+/-n);

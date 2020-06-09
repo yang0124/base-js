@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			.a1{
+				color: red;
+				background: pink;
+			}
+			.a2{
+				color: yellow;
+				background: purple;
+			}
+		</style>
+	</head>
+	<body>
+		<button>变</button>
+		<a class="a1" href="http://www.baidu.com">百度一下</a>
+		
+		<script type="text/javascript">
+			var btn=document.getElementsByTagName("button")[0];
+			var a=document.getElementsByTagName("a")[0];
+			btn.onclick=function(){
+				if(a.innerHTML=="百度一下"){
+					a.innerHTML="京东";
+					a.href="http://www.jd.com";
+					a.className="a2";
+				}else{
+					a.innerHTML="百度一下";
+					a.href="http://www.baidu.com";
+					a.className="a1";
+				}	
+			}
+		</script>
+	</body>
+</html>

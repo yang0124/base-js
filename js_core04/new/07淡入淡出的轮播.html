@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			.carousel{
+				position: relative;
+			}
+			.carousel>img{
+				width: 100%;
+			}
+			.carousel_img img{
+				width: 100%;
+				vertical-align: top;
+				position: absolute;
+				top: 0;
+				left: 0;
+				opacity: 0;
+				transition: all 1s;
+			}
+			.carousel button{
+				position: absolute;
+				top: 50%;
+				width: 50px;
+				height: 50px;
+				background: rgba(0,0,0,.5);
+				border-radius: 50%;
+				border: 2px solid #000;
+				color: #fff;
+				outline: none;
+				cursor: pointer;
+				margin-top: -25px;
+				color: red;
+			}
+			.carousel button:hover{
+				background: rgba(0,0,0,.9);
+			}
+			.carousel button:nth-of-type(1){
+				left: 20px;
+			}
+			.carousel button:nth-of-type(2){
+				right: 20px;
+			}
+			ul{
+				position: absolute;
+				bottom: 20px;
+				left: 50%;
+				margin-left: -20px;
+			}
+			li{
+				width: 10px;
+				height: 10px;
+				display: inline-block;
+				background: #fff;
+				border-radius: 50%;
+				cursor: pointer;
+			}
+			img.active{
+				opacity: 1;
+			}
+			li.active{
+				background: red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="carousel">
+			<div class="carousel_img">
+				<img class="active" src="img/4.jpg"/>
+				<img src="img/5.jpg"/>
+				<img src="img/6.jpg"/>
+			</div>
+			<img src="img/4.jpg"/>
+			<button><</button>
+			<button>></button>
+			<ul>
+				<li dy="0" class="active"></li>
+				<li dy="1"></li>
+				<li dy="2"></li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var btns=document.getElementsByTagName("button");
+			var carousel_img=document.getElementsByClassName("carousel_img")[0];
+			var imgs=carousel_img.getElementsByTagName("img");//[img,img,img]
+			var lis=document.getElementsByTagName("li");//[li,li,li]
+			var j=0;//当前的位置;
+			for(var i=0;i<btns.length;i++){
+				btns[i].onclick=function(){
+					if(this.innerHTML=="&gt;"){
+						animate(1)
+					}else{
+						animate(-1)
+					}
+				}
+			}
+			for(var i=0;i<lis.length;i++){
+				lis[i].onclick=function(){
+					j=this.getAttribute("dy");
+					animate(j);
+				}
+			}
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			function animate(x){
+				if(x===1){
+					j+=x;
+					if(j==3){
+						j=0;
+					}
+				}else if(x===-1){
+					j+=x;
+					if(j==-1){
+						j=2;
+					}
+				}else{
+					j=x;
+				}
+				for(var i=0;i<imgs.length;i++){
+					imgs[i].className="";
+					lis[i].className="";
+				}
+				imgs[j].className="active";
+				lis[j].className="active";
+			}
+		</script>
+	</body>
+</html>

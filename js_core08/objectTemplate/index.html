@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>自我介绍</title>
+		<link rel="Stylesheet" href="index.css"/>
+	</head>
+	<body>
+		<div id="parentDiv">
+<div id="lilei" onmouseover="lilei.intrSelf()" onmouseout="dialog.style.display='none'">
+</div>
+<div id="hmm" onmouseover="hmm.intrSelf()" onmouseout="dialog.style.display='none'">
+</div>
+			<div id="dialog">
+			</div>
+		</div>
+		<script>
+		var father={bal:100000000,car:"=B="};
+
+/*构造函数*/
+		//Step1. 先定义构造函数，描述所有学生的统一结构
+		function Student(sname,sage){
+			this.sname=sname;
+			this.sage=sage;
+		}//Student.prototype
+		Student.prototype=father;//修改构造函数的原型
+		//向构造函数的原型对象中添加共有属性和方法
+		Student.prototype.intrSelf=function(){
+				dialog.innerHTML="I'm "+this.sname
+												+",I'm "+this.sage
+												+",I'm from "+this.class_name
+												+",My bal is "+this.bal
+												+",My car is "+this.car;
+				dialog.style.display="block";
+		}
+		//为李雷和韩梅梅添加共有属性class_name，初始化为初一(2)班
+		Student.prototype.class_name="高一(2)班";
+
+		//Step2. 用new调用构造函数，传入属性值
+		var lilei=new Student("Li Lei",12);
+		var hmm=new Student("Han Meimei",13);
+		var xiaoming=new Student("Xiao Ming",11);
+		console.log(xiaoming.bal);
+		console.log(xiaoming.class_name);
+/* 判断自有属性和共有属性
+	console.log(//仅判断自有
+	lilei.hasOwnProperty("class_name")?"自有":"共有或没有"
+	);
+	console.log(hmm.toString());//调用爷爷的toString方法
+	//判断lilei的原型链上是否包含
+	console.log("birth" in lilei);
+	//判断自有或共有
+	var prop="intrSelf";//保存要检测的属性
+	console.log(lilei.hasOwnProperty(prop)?"自有":
+						//不是自有，却在原型链上，就是共有
+													 prop in hmm?"共有":
+						//不在原型链上，就是没有
+																		 "没有");
+*/
+/* 修改和删除属性
+		lilei.birth=new Date("1992/6/29");
+		console.log(lilei.birth);
+		delete lilei.birth;
+		console.log(lilei.birth);
+
+		Student.prototype.class_name="高二(2)班";
+		delete Student.prototype.class_name;
+*/
+		
+		</script>
+	</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			"use strict";
+			
+			var eric={"id":1001,"name":"eric","salary":15000};
+			
+//			Object.defineProperty(eric,"id",{
+//				writable: false,
+//				configurable: false,
+//			})
+//			Object.defineProperty(eric,"name",{
+//				configurable: false,
+//			})
+//			Object.defineProperty(eric,"salary",{
+//				enumerable: false,
+//			})
+			Object.defineProperties(eric,{
+				"id":{writable:false,configurable:false},
+				"name":{configurable:false},
+				"salary":{enumerable:false,configurable:false},
+			})
+			
+			
+//			eric.id=1500;
+//			eric.salary1=1500;
+//			delete eric.id;
+			delete eric.name;
+			for(var i in eric){
+				console.log(eric[i]);
+			}
+			console.log(eric);
+			
+			
+			
+			
+			
+			
+			
+//			delete eric.id;
+//			delete eric.name;
+
+//			for(var i in eric){
+//				console.log(eric[i]);
+//			}
+
+//			console.log(Object.getOwnPropertyDescriptor(eric,"id"));
+//			console.log(Object.getOwnPropertyDescriptor(eric,"salary"));
+//			console.log(Object.getOwnPropertyDescriptor(eric,"name"));
+		</script>
+	</body>
+</html>

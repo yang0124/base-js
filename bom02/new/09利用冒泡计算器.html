@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div id="d1">
+			<textarea id="txt"></textarea>
+			<button>0</button>
+			<button>1</button>
+			<button>2</button>
+			<button>3</button>
+			<button>4</button>
+			<button>5</button>
+			<button>6</button>
+			<button>7</button>
+			<button>8</button>
+			<button>9</button>
+			<button>%</button>
+			<button>+</button>
+			<button>-</button>
+			<button>*</button>
+			<button>/</button>
+			<button>C</button>
+			<button>=</button>
+		</div>
+		
+		<script type="text/javascript">
+			d1.onclick=e=>{
+				e=e||window.event;
+				var target=e.target||e.srcElement;
+				if(target.nodeName=="BUTTON"){
+					if(target.innerHTML=="C"){
+						txt.innerHTML="";
+					}else if(target.innerHTML=="="){
+						txt.innerHTML=eval(txt.innerHTML);
+					}else{
+						txt.innerHTML+=target.innerHTML;
+					}
+				}
+			}
+		</script>
+	</body>
+</html>

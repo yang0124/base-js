@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<button onclick="f1()">输入工资查看税收</button>
+		<script type="text/javascript">
+			function f1(){
+				var money=parseFloat(prompt("请输入您的工资"));//2000
+				if(!isNaN(money)){//10000
+					var shui=0;
+					if(money>=9000){
+						shui=(money-9000)*0.1;//100
+						money=9000;
+					}
+					
+					if(money>=5000){//5000
+						shui+=(money-5000)*0.05;//200
+						money=5000;
+					}
+					
+					if(money>=3500){
+						shui+=(money-3500)*0.025;//1500
+					}
+					console.log(shui);
+				}else{
+					console.log("恶意输入");
+					f1();
+				}
+			}
+		</script>
+	</body>
+</html>

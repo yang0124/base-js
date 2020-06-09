@@ -1,0 +1,77 @@
+1、BOM：Browser Object Model
+	专门操作浏览器的窗口 -- 没有标准，广泛支持
+
+2、window对象：扮演2个角色
+		1、它代替了ES里面的Global，充当全局对象（全局函数、全局变量）
+		2、指代当前打开的浏览器窗口
+
+   1、网页打开新链接的方式：
+	1、替换当前页面，可以后退
+	   html：<a href="http://www.baidu.com">百度一下</a>
+	     js：window.open("url","_self");
+
+	2、替换当前页面，禁止后退（支付完成后）
+	     history对象：在内存中存储*当前窗口*打开过的历史记录的栈结构
+	     location对象：保存*当前窗口*正在打开的url地址
+	     js：location.replace("新url")
+
+	3、在新窗口打开，可以打开多个
+	   html：<a href="http://www.baidu.com" target="_blank">百度一下</a>
+	     js：window.open("url","_blank");
+
+	4、在新窗口打开，只能打开一个（跳转到支付页面）
+	   html：<a href="http://www.baidu.com" target="name">百度一下</a>
+	         只能打开一个的意思是：在名为name的新窗口打开url
+		 如果重新打开相同name，新打开的窗口会替换掉旧的窗口
+	     js：window.open("url","name");
+
+   2、窗口的位置和大小
+      窗口的大小：
+	1、浏览器的大小：
+	   浏览器的文档显示区域：宽：innerWidth	高：innerHeight
+	   浏览器的完整的大小：宽：outerWidth	高：outerHeight
+	   屏幕的大小：宽：screen.width		高：screen.height;
+
+	2、设置窗口大小和窗口的位置
+	   注意：本身的window并不能修改大小，只有新打开的窗口才可以设置
+	  *打开新窗口：var pop=window.open("url","name","config");
+	   config是一个配置字符串："width=,height=,top=,left="
+	   设置新窗口大小：pop.resizeTo(newW,newH);
+	  *设置新窗口位置：pop.moveTo(newTop,newLeft);
+	   关闭页面：window.close();
+
+	点不到的小窗口，有bug：下一次随机的位置可能鼠标刚好已经在里面了
+-----------------------------------------------------------------------------------
+	解决：***获取鼠标的位置
+	1、获得事件对象e
+	   在你的事件中的function(e){}传入一个形参e，这个e会自动获得事件对象
+	2、获取：e.screenX - 鼠标相对于屏幕的坐标
+		 e.clientX - 鼠标相对于浏览器客户端的坐标
+		 e.pageX - 鼠标相对于网页的坐标
+
+3、*****定时器
+
+  *周期性定时器：让程序按指定时间间隔反复执行同一项任务
+   如何使用：3步
+	1、***任务：你要做什么事
+	2、开启：timer=setInterval(()=>{},间隔毫秒数);
+		 timer获得定时器的序号，唯一的，表示内存中的一个定时器
+		 强调：timer通常不是局部变量
+		       timer经常被其他函数中的操作停止
+	3、停止：停止反复执行
+		 clearInterval(timer);
+		 timer=null;
+
+   一次性定时器
+	和周期性定时器大差不差，但是默认只会做一次，不需要我们手动停止
+	开启：timer=setTimeout(()=>{},间隔毫秒数);
+	停止：clearTimeout(timer);
+	周期性和一次性定时器是可以互换的
+
+作业：
+	1、点不到的小窗口
+	2、点不到的div
+	3、*鼠标跟随动画
+	4、*距离明天放学还有多久
+        5、5秒后关闭页面
+	6、广告关闭后，5秒后自动打开

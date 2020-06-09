@@ -1,0 +1,33 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+<title>事件处理</title>
+<meta charset="utf-8" />
+<script>
+	window.onload=function(){
+		console.log(location.search);
+		console.log(location.protocol);
+		if(location.search!=""){
+			//将location的search属性，从第2个字符开始截取之后所有内容，按&切割，保存在数组params
+			var params=location.search.slice(1).split("&");
+			//遍历params中每个参数字符串
+			for(var i=0;i<params.length;i++){
+				//将当前字符串按=切割，保存在arr中
+				var arr=params[i].split("=");
+				//输出"变量名 : 变量值"
+				console.log(arr[0]+":"+arr[1]);
+			}
+		}
+	}
+</script>
+</head>
+<body>
+ 	<form>
+		姓名:<input name="username"/>
+		密码:<input type="password" name="pwd"/>
+		<input type="submit"/>
+	</form>
+	<!--2. 实现不能后退的页面跳转-->
+	<button >go to tmooc</button>
+</body>
+</html>

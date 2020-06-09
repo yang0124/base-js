@@ -1,0 +1,97 @@
+															<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			//说白了还是一个函数，只不过是一种新的词法结构
+//			function f1(){
+//				var a=100;
+//				return function(){
+//					a++;
+//					return a;
+//				}
+//			}
+//			
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+//			var fn=f1();
+			
+//			
+//			console.log(fn());
+//			console.log(fn());
+//			console.log(fn());
+//			console.log(fn());
+//			
+//			var fn1=f1();
+//			console.log(fn1());
+//			console.log(fn1());
+//			
+//			console.log(fn());
+
+//			function factory(){
+//				var i=0;
+//				return function(){
+//					i++;
+//					return i;
+//				}
+//			}
+//			
+//			var icbc=factory();
+//			
+//			var jh=factory();
+
+//			function fatory(sl){
+//				return function(money){
+//					return money*sl;
+//				}
+//			}
+//			
+//			var rmb2$=fatory(0.1416);
+//			var rmb2E=fatory(0.1096);
+//			
+//			console.log(rmb2$(1000));
+//			console.log(rmb2$(2000));
+//			console.log(rmb2$(3000));
+//			
+//			console.log(rmb2E(1000));
+//			console.log(rmb2E(2000));
+//			console.log(rmb2E(3000));
+
+
+
+			// function f1(){
+			// 	var a=5;
+			// 	return function(){
+			// 		a++;
+			// 		return a;
+			// 	}
+			// }
+			
+			// var nc1=f1();
+			// console.log(nc1)
+			// var nc2=f1();
+			
+
+			function f1(){
+				var a=10;
+				return function(){
+					a++;
+					return a
+				}
+			}
+
+		var nc1=f1()
+		console.log(nc1())
+		console.log(nc1())
+		</script>
+	</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var wsc={
+				"name":"王思聪",
+				"phone":"iphone11",
+				"dog":"阿拉斯加",
+				"gf":"一堆",
+			}
+			wsc.__proto__.js=100;
+//			console.log(wsc.js);
+			//obj.hasOwnProperty("属性名");
+			
+//			console.log(wsc.hasOwnProperty("money"));
+
+			if(wsc.hasOwnProperty("money")==false && "money" in wsc){
+				console.log("共有")
+			}
+		</script>
+	</body>
+</html>

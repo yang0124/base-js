@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<ul id="ul">
+			<li dy="4">rose</li>
+			<li dy="7">jack</li>
+			<li dy="6">tony</li>
+			<li dy="5">john</li>
+			<li dy="2">allen</li>
+			<li dy="3">bulu</li>
+			<li dy="1">jackson</li>
+		</ul>
+		<script type="text/javascript">
+			function calc(base,bonus1,bonus2){
+				console.log(this);
+				return this.name+"的工资为："+(base+bonus1+bonus2);
+			}
+//			
+//			
+			var mmx={"name":"马敏雪"};
+//			var ls={"name":"skyshow"};
+//			
+////			console.log(mmx);
+			console.log(window.calc(10000,5000,5000));
+			console.log(calc.apply(mmx,[10000,2000,3000]));
+//			console.log(calc.call(mmx,10000,2000,3000));
+//			
+//			console.log(calc.call(ls,5000,6000,7000))
+
+			var lis=document.getElementsByTagName("li");
+			//***将类数组变为普通数组
+			console.log(lis);
+			lis=Array.prototype.slice.call(lis);
+			console.log(lis)
+			lis.sort(function(a,b){
+				return a.getAttribute("dy")-b.getAttribute("dy");
+			})
+
+			console.log(lis);
+			
+			for(var i=0;i<lis.length;i++){
+				ul.appendChild(lis[i]);
+			}
+		</script>
+	</body>
+</html>

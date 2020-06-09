@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<div></div>
+		<script type="text/javascript">
+			var str=prompt("请输入一个字");
+			var code=str.charCodeAt(0);//19968
+			
+			if(code>=48 && code<=57){
+				console.log("数字");
+			}else if(code>=65 && code<=90 || code>=97 && code<=122){
+				console.log("字母");
+			}else if(code>=19968 && code<=40869){
+				console.log("汉子");
+			}
+		</script>
+	</body>
+</html>

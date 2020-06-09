@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr1=[1,2,3,4,5];
+			var arr2=[2,2,3,4,5];
+			var arr3=[3,2,3,4,5];
+			if(Array.prototype.zwjs===undefined){
+				Array.prototype.zwjs=function(){
+					return "大家好，我是一个数组："+this;
+				}
+			}
+			console.log(arr1.zwjs());
+			console.log(arr2.zwjs());
+			console.log(arr3.zwjs());
+		</script>
+	</body>
+</html>

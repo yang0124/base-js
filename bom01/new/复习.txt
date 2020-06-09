@@ -1,0 +1,93 @@
+1、元素的内容
+  *elem.innerHTML：识别标签
+
+   elem.innerText == elem.textContent
+
+2、元素的属性
+   1、读取属性值
+	1、elem.attributes[i].value
+	2、elem.attributes["属性名"].value
+	3、elem.getAttributeNode("属性名").value
+	4、elem.getAttribute("属性名");
+
+   2、设置
+	1、elem.setAttribute("属性名","属性值");
+	2、elem.setAttributeNode(attrNode);
+
+   HTML DOM：
+	读取：elem.属性名;
+	设置：elem.属性名="属性值";
+	注意：HTML DOM都不能操作自定义属性
+
+   3、删除
+	elem.removeAttribute("属性名")
+	HTML DOM：elem.属性名=""
+
+   4、判断有没有，只能判断有没有
+	var bool=elem.hasAttribute("属性名");
+	HTML DOM：elem.属性名!=""
+
+3、元素的样式
+   内联样式：
+	获取：elem.style.css属性名;
+	设置：elem.style.css属性名="css属性值";
+
+   样式表：
+	1、var sheet=document.styleSheets[i];
+	2、var rules=sheet.rules;
+	3、var rule=rules[i];
+	4、rule.style.css属性名="css属性值";
+
+-----------------------------------------------------------------------------------
+
+1、创建元素
+   单个元素：
+	1、var elem=document.createElement("标签名");
+	2、设置必要的属性和必要的事件
+	3、追加到DOM树之上，生成页面
+	   1、父.appendChild(新)
+	   2、父.insertBefore(新,已有兄弟);
+	   3、父.replaceChild(新,已有兄弟);
+
+   注意：每一次修改DOM树，都会导致页面重新加载，加载越多效率越低
+
+   多个元素：
+	1、var frag=document.createDocumentFragment();
+	2、frag.appendChild(新);
+	3、父.appendChild(frag);
+
+2、删除元素：父.removeChild(删除的儿子);
+
+3、HTML DOM：
+   img：new Image();
+
+   select：1、options == children
+	   2、selectedIndex：可以获取当前选中项的下标
+	   3、add(option) == appendChild();
+	   4、remove(i) == 父.removeChild(删除的儿子);
+	   5、onchange：
+
+   option：new Option("innerHTML","value");
+
+   如果以后生成的option希望可以追加到页面上：可简写：
+	sel.add(new Option("txt","val"));
+
+   form：document.forms[i];
+	 form.elements[i];
+	 onsubmit;
+	 elem.focus();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

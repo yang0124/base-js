@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+			var arr=[];
+			for(var i=48;i<=53;i++){
+				var x=String.fromCharCode(i);
+				arr.push(x);
+			}
+			console.log(arr)
+//			for(var i=65;i<=90;i++){
+//				var x=String.fromCharCode(i);
+//				arr.push(x);
+//			}
+//			
+//			for(var i=97;i<=122;i++){
+//				var x=String.fromCharCode(i);
+//				arr.push(x);
+//			}
+//			for(var i=19968;i<=40869;i++){
+//				var x=String.fromCharCode(i);
+//				arr.push(x);
+//			}
+			
+			var codes="";
+			while(codes.length<4){
+				var r=parseInt(Math.random()*(5-0+1)+0);
+				//在codes之中去查找有没有arr[r]如果没有才拼接
+				if(codes.indexOf(arr[r])==-1){
+					codes+=arr[r];
+				}
+			}
+			
+			
+			console.log(codes);
+
+			
+//			var user=prompt("请输入验证码："+codes);
+//			if(user.toUpperCase()==codes.toUpperCase()){
+//				alert("验证通过");
+//			}else{
+//				alert("验证失败");
+//			}
+		
+		</script>
+	</body>
+</html>

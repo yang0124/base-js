@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body id="bd">
+		<script type="text/javascript">
+			//服务器端过来的数据 JSON
+//			var arr=[
+//				{"name":"熊川","children":[{"name":"熊猫"},{"name":"熊大"}]},
+//				{"name":"谈真心","children":[{"name":"谈恋爱","children":[{"name":"谈对象"}]}]},
+//				{"name":"蒋林"}
+//			];
+//			
+//			function getname(arr){
+//				for(var i=0;i<arr.length;i++){
+//					var p=document.createElement("p");
+//					p.innerHTML=arr[i].name;
+//					bd.appendChild(p);
+//					
+//					if(arr[i].children){
+//						getname(arr[i].children);
+//					}
+//				}
+//			}
+//			getname(arr)
+
+
+			var city=[
+				{"name":"四川省","children":[{"name":"成都市","children":[{"name":"成都区1"},{"name":"成都区2"},{"name":"成都区3"}]},{"name":"绵阳市"},{"name":"德阳市"}]},
+				{"name":"重庆市"},
+				{"name":"河北省"}
+			]
+			
+			function dg(arr){
+				for(var i=0;i<arr.length;i++){
+					var h1=document.createElement("h1");
+					h1.innerHTML=arr[i].name;
+					bd.appendChild(h1);
+					
+					if(arr[i].children){
+						dg(arr[i].children)
+					}
+				}
+			}
+			dg(city)
+		</script>
+	</body>
+</html>

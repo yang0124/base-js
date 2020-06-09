@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<script type="text/javascript">
+//			var str="jerry~~rose~~jack~~sg";
+////			var arr=str.split("||");
+//			var arr=str.split(/&&|~~|!!/);
+//			console.log(arr);
+
+			//基础替换
+//			var str="那天，我去了她家，我说：\n"+
+//				    "卧槽，你家真大\n"+
+//				    "她说，我去草地走走\n"+
+//				    "我说，等我草草的收拾一下，我肏";
+////			str=str.replace(/[我卧][去草槽]+/g,"**");
+////			console.log(str);
+//			
+//			//高级替换
+//			str=str.replace(/[我卧][去草槽肏]+/g,function(a,b,c){
+//					console.log(a);
+//					console.log(b);
+//					
+//				return a.length==2?"屌屌":"炸炸炸";
+//			
+//			});			
+//			
+//			console.log(str);
+
+			//删除
+			var str="     hello world       "
+			str=str.replace(/^\s|\s$/g,"")
+			console.log(str);
+//			console.log("啦啦啦啦啦")
+
+			//格式化：
+//			var str="19860221";
+//			var reg=/(\d{4})(\d{2})(\d{2})/;
+//			str=str.replace(reg,function(a,b,c,d){
+//				return a
+//			})
+//			
+//			console.log(str);
+
+			var str="500103198602215933";
+			var reg=/\d{6}(\d{4})(\d{2})(\d{2})\d{4}/;
+			str=str.replace(reg,"$1年$2月$3日");
+			console.log(str);
+			
+		</script>
+	</body>
+</html>

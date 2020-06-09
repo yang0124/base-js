@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<body>
+		<select id="sel1">
+			
+		</select>
+		<select id="sel2">
+	
+		</select>
+		<script type="text/javascript">
+			var arr1=["-请选择-","北京","南京","西京","东京","重庆"];
+			var str="<option>"+arr1.join("</option><option>")+"</option>";
+			sel1.innerHTML=str;
+			
+			//二维数组
+			var arr2=[
+				["-请选择-"],
+				["朝阳区","海淀区","昌平区","沙河区","北京1"],
+				["南京1","南京2","南京3","南京4","南京5"],
+				["西京1","西京2","西京3","西京4","西京5"],
+				["东京1","东京2","东京3","东京4","东京5"],
+				["渝中区","渝北区","江北区","沙坪坝","九龙坡区"]
+			];
+			
+			//onchange事件：sel的特有事件，只有发生状态改变才会触发
+			sel1.onchange=function(){
+				var i=this.selectedIndex;//可以获得当前选中者的下标
+				
+				var arr=arr2[i];
+				var str="<option>"+arr.join("</option><option>")+"</option>";
+				sel2.innerHTML=str;
+			}
+		</script>
+		
+		
+	</body>
+</html>

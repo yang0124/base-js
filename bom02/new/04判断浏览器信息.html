@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width:300px;
+				height: 300px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="d1"></div>
+		<script type="text/javascript">
+			
+			var browser="unknow";
+			var version="unknow";
+			
+			//判断浏览器
+			var str=navigator.userAgent;
+			if(str.indexOf("OPR")!=-1){
+				browser="Opera";
+				d1.style.background="purple";
+			}else if(str.indexOf("Chrome")!=-1){
+				browser="Chrome";
+				d1.style.background="pink";
+			}else if(str.indexOf("Safari")!=-1){
+				browser="Safari";
+				d1.style.background="golden";
+			}else if(str.indexOf("Firefox")!=-1){
+				browser="Firefox";
+				d1.style.background="green";
+			}else if(str.indexOf("MSIE")!=-1){
+				browser="IE";
+				d1.style.background="black";
+			}else{
+				browser="IE";
+				version="11";
+			}
+			
+			//判断版本号
+			if(browser!="unknow"){
+				if(browser=="Opera"){
+					var i=str.indexOf("OPR");
+					i+=4;
+					version=str.slice(i,i+4);
+				}else{
+					var i=str.indexOf(browser);
+					console.log(i);
+					i+=browser.length+1;
+					version=str.slice(i,i+4);
+				}
+			}
+			
+			alert("现在的浏览器是："+browser+"，当前版本："+version);
+		</script>
+	</body>
+</html>

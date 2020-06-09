@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			img{
+				width: 50px;
+				position: absolute;
+				transition: all 1s;
+				border-radius: 50%;
+			}
+		</style>
+	</head>
+	<body id="bd">
+		<a href="#">123123</a>
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<br />
+		<script type="text/javascript">
+			document.onmousemove=function(e){
+				var left=e.pageX;
+				var top=e.pageY;
+				
+				var img=new Image();
+				img.src="4.jpg";
+				img.style.top=top+"px";
+				img.style.left=left+"px";
+				bd.appendChild(img);
+				
+				
+				//图片特殊：图片加载的比较慢，但是JS速度很快，图片的过渡必须等待图片加载完毕才能执行
+				img.onload=()=>{//等图片加载完毕后在执行
+					img.style.opacity="0";
+					img.style.transform="scale(0)";
+				}
+			}
+			
+			setInterval(()=>{
+				var img=document.getElementsByTagName("img");
+				for(var i=0;i<img.length;i++){
+					bd.removeChild(img[i]);
+				}
+			},1000)
+		</script>
+	</body>
+</html>
